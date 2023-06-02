@@ -23,6 +23,7 @@ const Signup = (props: AuthPageProps): JSX.Element => {
   const [formData, setFormData] = useState<SignupFormData>({
     name: '',
     email: '',
+    role: 'Admin',
     password: '',
     passwordConf: '',
   })
@@ -63,7 +64,7 @@ const Signup = (props: AuthPageProps): JSX.Element => {
     setPhotoData({ photo: evt.target.files[0] })
   }
 
-  const { name, email, password, passwordConf } = formData
+  const { name, email, role, password, passwordConf } = formData
 
   const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
     evt.preventDefault()
@@ -103,6 +104,18 @@ const Signup = (props: AuthPageProps): JSX.Element => {
             name="email"
             onChange={handleChange}
           />
+        </label>
+        <label className={styles.label}>
+          Role
+          <select
+            name="role"
+            value={role}
+            onChange={handleChange}
+          >
+            <option value="Admin">Admin</option>
+            <option value="Driver">Driver</option>
+            <option value="Mechanic">Mechanic</option>
+          </select>
         </label>
         <label className={styles.label}>
           Password

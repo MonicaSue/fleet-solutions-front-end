@@ -16,6 +16,8 @@ export interface User {
   name: string;
   email: string;
   profile: { id: number };
+  role: string;
+  isActive: boolean;
   id: number;
   createdAt: string;
   updatedAt: string;

@@ -9,6 +9,13 @@ input[type="file"] {
   padding: 0;
 }
 
+select {
+  margin-left: 16px;
+  padding: 4px 8px;
+  font-size: 16px;
+  width: 300px;
+}
+
 .container {
   display: flex;
   align-items: center;
