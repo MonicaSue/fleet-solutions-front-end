@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  /* margin-top: 60px; */
+}
+
+.overlayText {
+  position: absolute;
+  color: black;
+  border-radius: 7px;
+  padding: 5px 15px;
+  text-align: center;
+  margin: 10%;
+  overflow: hidden;
+  transition: opacity 0.3s;
+}
+
+.inactive {
+  filter: drop-shadow(0 0 1rem #e23);
+}
+
+.underMaintenance {
+  filter: drop-shadow(0 0 1rem rgb(255, 238, 0));
+}
+
+.retired {
+  filter: drop-shadow(0 0 1rem rgb(9, 9, 9));
+}

@@ -10,7 +10,7 @@ import { Av } from '../../types/models'
 
 // components
 import NewAvForm from '../../components/NewAvForm/NewAvForm';
-import AvCard from '../../components/AvCard/AvCard'
+import AvCardContainer from '../../components/AvCardContainer/AvCardContainer';
 
 // css
 import styles from './Avs.module.css'
@@ -41,8 +41,8 @@ const Avs = (): JSX.Element => {
       <div className={styles.searchAdd}>
         <NewAvForm />
       </div>
-      <div className={styles.avContainer}>
-        <AvCard avs={avs} />
+      <div className={styles.avs}>
+        <AvCardContainer avs={avs} />
       </div>
     </main>
   )
