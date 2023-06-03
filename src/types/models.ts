@@ -3,6 +3,7 @@
 export interface Av {
   vehicleNo: string;
   status: string;
+  profileId: number,
   id: number;
   createdAt: string;
   updatedAt: string;
