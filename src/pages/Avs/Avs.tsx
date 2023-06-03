@@ -10,6 +10,7 @@ import { Av } from '../../types/models'
 
 // components
 import NewAvForm from '../../components/NewAvForm/NewAvForm';
+import AvCard from '../../components/AvCard/AvCard'
 
 // css
 import styles from './Avs.module.css'
@@ -41,9 +42,7 @@ const Avs = (): JSX.Element => {
         <NewAvForm />
       </div>
       <div className={styles.avContainer}>
-        {avs.map((av: Av) => (
-          <img key={av.id} src={avIcon} alt="Vehicle" />
-        ))}
+        <AvCard avs={avs} />
       </div>
     </main>
   )
