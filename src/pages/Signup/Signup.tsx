@@ -31,7 +31,7 @@ const Signup = (props: AuthPageProps): JSX.Element => {
     photo: null
   })
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setMessage('')
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }

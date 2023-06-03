@@ -1,11 +1,13 @@
 // npm
 import { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 // services
 import * as avService from '../../services/avService'
 
 // types
 import { Av } from '../../types/models'
+import { AvFormData } from '../../types/forms';
 
 // css
 import styles from './Avs.module.css'
@@ -20,8 +22,13 @@ import avIcon from '../../assets/icons/av.svg'
 
 
 const Avs = (): JSX.Element => {
+  // const navigate = useNavigate()
   const [open, setOpen] = useState<boolean>(false)
   const [avs, setAvs] = useState<Av[]>([])
+  const [formData, setFormData] = useState<AvFormData>({
+    vehicleNo: '',
+    status: '',
+  })
 
   const handleClickOpen = (): void => {
     setOpen(true)
@@ -30,6 +37,8 @@ const Avs = (): JSX.Element => {
   const handleClose = (): void => {
     setOpen(false)
   }
+
+  const { vehicleNo, status } = formData
 
   useEffect((): void => {
     const fetchAvs = async (): Promise<void> => {
@@ -43,10 +52,24 @@ const Avs = (): JSX.Element => {
     fetchAvs()
   }, [])
 
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
+
+  const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
+    evt.preventDefault()
+    await avService.create(formData)
+    setOpen(false)
+    setFormData({
+      vehicleNo: '',
+      status: '',
+    })
+    // navigate('/avs')
+  }
+
   return (
     <main className={styles.container}>
       <div className={styles.searchAdd}>
-        {/* <form action=""></form> */}
         <IconButton
           id="button"
           onClick={handleClickOpen}
@@ -56,7 +79,7 @@ const Avs = (): JSX.Element => {
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Add an AV to Your Fleet </DialogTitle>
           <DialogContent>
-            <form>
+            <form onSubmit={handleSubmit}>
               <FormControl sx={{ m: 1, minWidth: 300 }}>
                 <TextField
                   type="text"
@@ -65,16 +88,19 @@ const Avs = (): JSX.Element => {
                   required
                   name="vehicleNo"
                   label="Vehicle Number"
-                  // value={vehicleNo}
+                  value={vehicleNo}
+                  onChange={handleChange}
                 />
               </FormControl>
               <FormControl sx={{ m: 1, minWidth: 300 }}>
                 <InputLabel id="status-label">Status</InputLabel>
                 <Select 
+                  name='status'
                   labelId="status-label"
                   label="Status"
                   required
-                  // value={status}
+                  value={status}
+                  onChange={handleChange}
                 >
                   <MenuItem value={"Active"}>Active</MenuItem>
                   <MenuItem value={"Inactive"}>Inactive</MenuItem>
@@ -86,7 +112,7 @@ const Avs = (): JSX.Element => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleClose}>Save</Button>
+            <Button onClick={handleSubmit}>Save</Button>
           </DialogActions>
         </Dialog>
       </div>
