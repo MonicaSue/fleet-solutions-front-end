@@ -1,0 +1,48 @@
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #515151;
+  overflow: hidden;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.linkContainer {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: space-between;
+  padding: 16px 16px 16px 0px;
+}
+.links {
+  display: flex;
+}
+.profile {
+  display: flex;
+  text-align: right;
+  align-items: center;
+}
+li > a,
+li > a:visited {
+  text-decoration: none;
+  color: #d7d7d7;
+}
+li {
+  margin-left: 10px;
+}
+.logo {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.personIcon {
+  color: #d7d7d7;
+}
+.loggedIn,
+.loggedIn:visited {
+  text-decoration: none;
+  color: #474962;
+}
+

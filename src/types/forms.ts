@@ -1,5 +1,10 @@
 /* ---------==== custom forms ====--------- */
 
+export interface AvFormData {
+  vehicleNo: string;
+  status: string;
+  profileId: number;
+}
 
 
 /* ---------===== auth forms =====--------- */

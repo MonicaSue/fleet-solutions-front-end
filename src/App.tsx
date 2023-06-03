@@ -6,6 +6,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
+import Avs from './pages/Avs/Avs'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
@@ -41,6 +42,14 @@ function App(): JSX.Element {
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
+        <Route 
+          path="/avs" 
+          element={
+            <ProtectedRoute user={user}>
+              <Avs />
+            </ProtectedRoute>
+          } 
+        />
         <Route
           path="/profiles"
           element={
