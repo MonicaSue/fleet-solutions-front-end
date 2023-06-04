@@ -8,6 +8,7 @@ import * as authService from '../../services/authService'
 // css
 import styles from './Signup.module.css'
 
+
 // types
 import { SignupFormData, PhotoFormData } from '../../types/forms'
 import { handleErrMsg } from '../../types/validators'

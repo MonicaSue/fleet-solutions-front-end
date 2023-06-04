@@ -26,20 +26,33 @@ async function create(formData: AvFormData): Promise<Av> {
   return await res.json() as Av
 }
 
-async function update(formData: UpdateAvFormData, id: number): Promise<Av> {
-  try {  
-    const res = await fetch(`${BASE_URL}/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    })
-    return await res.json() as Av
-  } catch(error) {
-    console.log(error)
-  }
+async function show(id: number): Promise<Av> {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json() as Av
 }
 
-export { getAllAvs, create, update }
+async function update(formData: UpdateAvFormData, id: number): Promise<Av> {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData)
+  })
+  return await res.json() as Av
+}
+
+async function deleteAv(id: number): Promise<Av> {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
+  return await res.json() as Av
+}
+
+export { getAllAvs, create, show, update, deleteAv }

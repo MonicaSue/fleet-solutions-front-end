@@ -1,6 +1,5 @@
 // npm
 import { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 
 // services
 import * as avService from '../../services/avService'
@@ -11,7 +10,7 @@ import { Av } from '../../types/models'
 // components
 import NewAvForm from '../../components/NewAvForm/NewAvForm';
 import AvCardContainer from '../../components/AvCardContainer/AvCardContainer';
-import NewReport from '../../components/NewReport/NewReport';
+import Report from '../../components/Report/Report';
 
 // css
 import styles from './Avs.module.css'
@@ -19,8 +18,8 @@ import styles from './Avs.module.css'
 
 const Avs = (): JSX.Element => {
   const [avs, setAvs] = useState<Av[]>([])
-  const [selectedAv, setSelectedAv] = useState<Av[] | null>(null)
-
+  const [selectedAvId, setSelectedAvId] = useState<string>('')
+  
   useEffect((): void => {
     const fetchAvs = async (): Promise<void> => {
       try {
@@ -33,11 +32,6 @@ const Avs = (): JSX.Element => {
     fetchAvs()
   }, [])
 
-  // const handleUpdateAv = async ()
-  // const handleSelectedAv = (evt: React.MouseEvent<HTMLImageElement>): void => {
-    
-  // }
-
   return (
     <main className={styles.container}>
       <div className={styles.searchAdd}>
@@ -45,10 +39,10 @@ const Avs = (): JSX.Element => {
       </div>
       <div className={styles.avs}>
         <div className={styles.cars}>
-          <AvCardContainer avs={avs} selectedAv={selectedAv} />
+          <AvCardContainer avs={avs} setSelectedAvId={setSelectedAvId} />
         </div>
         <div className={styles.report}>
-          <NewReport selectedAv={selectedAv}/>
+          <Report selectedAvId={selectedAvId}/>
         </div>
       </div>
     </main>

@@ -16,9 +16,10 @@
 }
 
 .report {
-  width: 20%;
+  min-width: 400px;;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.55);
+  border-radius: 5px;
 }
 

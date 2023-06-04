@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 // css
 import styles from './Landing.module.css'
 
+// mui
+import { Button } from '@mui/material';
+
 // types
 import { User } from '../../types/models'
 
@@ -29,10 +32,10 @@ const Landing = (props: LandingProps): JSX.Element => {
               </div>
               <div className={styles.loggedOutButtonContainer}>
                 <NavLink to="/auth/login">
-                  <button className={styles.landingButton}>Log In</button>
+                  <Button variant="outlined" className={styles.landingButton}>Log In</Button>
                 </NavLink>
                 <NavLink to="/auth/signup">
-                  <button className={styles.landingButton}>Sign Up</button>
+                <Button variant="outlined" className={styles.landingButton}>Sign Up</Button>
                 </NavLink>
               </div>
             </div>

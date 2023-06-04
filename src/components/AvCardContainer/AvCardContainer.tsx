@@ -9,15 +9,22 @@ import { Av } from '../../types/models'
 
 interface AvCardContainerProps {
   avs: Av[]
-  slectedAv: Av[] | null
+  setSelectedAvId: (value: string) => void
 }
 
 const AvCardContainer = (props: AvCardContainerProps): JSX.Element => {
-  const { avs, selectedAv } = props
+  const { avs, setSelectedAvId } = props
+
+  const handleClick = (evt: React.MouseEvent<HTMLImageElement>): void => {
+    setSelectedAvId(evt.currentTarget.id)
+  }
+
   return (
     <div className={styles.container}>
       {avs.map((av) => (
-        <AvCard key={av.id} av={av} selectedAv={selectedAv}/>
+        <div key={av.id} onClick={handleClick} id={av.id.toString()}>
+          <AvCard av={av} />
+        </div>
       ))}
     </div>
   )
