@@ -89,71 +89,73 @@ const Signup = (props: AuthPageProps): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      <h1>Sign Up</h1>
-      <p className={styles.message}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
-        <label className={styles.label}>
-          Name
-          <input type="text" value={name} name="name" onChange={handleChange} />
-        </label>
-        <label className={styles.label}>
-          Email
-          <input
-            type="text"
-            value={email}
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Role
-          <select
-            name="role"
-            value={role}
-            onChange={handleChange}
-          >
-            <option value="Admin">Admin</option>
-            <option value="Driver">Driver</option>
-            <option value="Mechanic">Mechanic</option>
-          </select>
-        </label>
-        <label className={styles.label}>
-          Password
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Confirm Password
-          <input
-            type="password"
-            value={passwordConf}
-            name="passwordConf"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Upload Photo
-          <input 
-            type="file" 
-            name="photo" 
-            onChange={handleChangePhoto}
-            ref={imgInputRef}
-          />
-        </label>
-        <div>
-          <Link to="/">Cancel</Link>
-          <button
-            className={styles.button}
-            disabled={ isFormInvalid() || isSubmitted }
-          >
-            {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
-          </button>
-        </div>
-      </form>
+      <div className={styles.content}>
+        <h1>Sign Up</h1>
+        <p className={styles.message}>{message}</p>
+        <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
+          <label className={styles.label}>
+            Name
+            <input type="text" value={name} name="name" onChange={handleChange} />
+          </label>
+          <label className={styles.label}>
+            Email
+            <input
+              type="text"
+              value={email}
+              name="email"
+              onChange={handleChange}
+            />
+          </label>
+          <label className={styles.label}>
+            Role
+            <select
+              name="role"
+              value={role}
+              onChange={handleChange}
+            >
+              <option value="Admin">Admin</option>
+              <option value="Driver">Driver</option>
+              <option value="Mechanic">Mechanic</option>
+            </select>
+          </label>
+          <label className={styles.label}>
+            Password
+            <input
+              type="password"
+              value={password}
+              name="password"
+              onChange={handleChange}
+            />
+          </label>
+          <label className={styles.label}>
+            Confirm Password
+            <input
+              type="password"
+              value={passwordConf}
+              name="passwordConf"
+              onChange={handleChange}
+            />
+          </label>
+          <label className={styles.label}>
+            Upload Photo
+            <input 
+              type="file" 
+              name="photo" 
+              onChange={handleChangePhoto}
+              ref={imgInputRef}
+            />
+          </label>
+          <div>
+            <Link to="/">Cancel</Link>
+            <button
+              className={styles.button}
+              disabled={ isFormInvalid() || isSubmitted }
+            >
+              {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
+            </button>
+          </div>
+        </form>
+      </div>
     </main>
   )
 }

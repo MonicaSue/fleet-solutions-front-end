@@ -5,6 +5,11 @@ export interface AvFormData {
   status: string;
 }
 
+export interface UpdateAvFormData {
+  vehicleNo: string;
+  status: string;
+}
+
 
 /* ---------===== auth forms =====--------- */
 

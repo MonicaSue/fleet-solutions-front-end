@@ -10,10 +10,12 @@ import styles from './AvCard.module.css'
 
 interface AvCardProps {
   av: Av
+  selectedAv: Av[] | null
 }
 
 const AvCard = (props: AvCardProps): JSX.Element => {
   const { av } = props
+  console.log(av)
 
 
   return (

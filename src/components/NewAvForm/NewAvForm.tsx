@@ -47,7 +47,7 @@ const NewAvForm = (): JSX.Element => {
         id="button"
         onClick={handleClickOpen}
       >
-        <AddBoxIcon />
+        <AddBoxIcon sx={{ fontSize: 50 }}/>
       </IconButton>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add a New AV to your Fleet</DialogTitle>
