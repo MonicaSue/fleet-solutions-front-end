@@ -9,6 +9,25 @@ export interface Av {
   updatedAt: string;
 }
 
+export interface Performance {
+  takeover: number;
+  distance: number;
+  date: Date;
+  notes: string;
+  profileId: number;
+  avId: number;
+}
+
+export interface Maintenance {
+  type: string;
+  partsCost: number;
+  laborCost: number;
+  date: Date;
+  notes: string;
+  maintenanceStatus: string;
+  profileId: number;
+  avId: number;
+}
 
 /* ---------===== auth models =====--------- */
 
