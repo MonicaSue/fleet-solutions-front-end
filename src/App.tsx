@@ -46,7 +46,7 @@ function App(): JSX.Element {
           path="/avs" 
           element={
             <ProtectedRoute user={user}>
-              <Avs />
+              <Avs user={user}/>
             </ProtectedRoute>
           } 
         />

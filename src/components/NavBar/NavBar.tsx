@@ -23,10 +23,10 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false)
   const anchorRef = useRef(null)
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     setOpen((prevOpen) => !prevOpen)
   }
-  const handleClose = (event) => {
+  const handleClose = (event: React.MouseEvent): void => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return
     }
@@ -40,7 +40,11 @@ const NavBar = (props: NavBarProps): JSX.Element => {
             <ul className={styles.linkContainer}>
               <li>FleetSolutions</li>
               <li><NavLink to="/avs">AVs</NavLink></li>
+              {user.role === 'Admin' ?
               <li><NavLink to="/profiles">Profiles</NavLink></li>
+              :
+              ''
+              }
             </ul>
             <div className={styles.profile}>
               <IconButton

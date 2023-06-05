@@ -6,6 +6,7 @@ import * as avService from '../../services/avService'
 
 // types
 import { Av } from '../../types/models'
+import { User } from '../../types/models'
 
 // components
 import NewAvForm from '../../components/NewAvForm/NewAvForm';
@@ -15,8 +16,13 @@ import Report from '../../components/Report/Report';
 // css
 import styles from './Avs.module.css'
 
+interface AvsProps {
+  user: User | null;
+}
 
-const Avs = (): JSX.Element => {
+const Avs = (props: AvsProps): JSX.Element => {
+  const { user } = props
+  
   const [avs, setAvs] = useState<Av[]>([])
   const [selectedAvId, setSelectedAvId] = useState<string>('')
   
@@ -47,7 +53,11 @@ const Avs = (): JSX.Element => {
           <AvCardContainer avs={avs} setSelectedAvId={setSelectedAvId} />
         </div>
         <div className={styles.report}>
-          <Report selectedAvId={selectedAvId} handleDeleteAv={handleDeleteAv}/>
+          <Report 
+            selectedAvId={selectedAvId}
+            user={user}
+            handleDeleteAv={handleDeleteAv}
+          />
         </div>
       </div>
     </main>
