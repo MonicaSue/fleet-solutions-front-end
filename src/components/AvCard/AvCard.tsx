@@ -20,10 +20,9 @@ const AvCard = (props: AvCardProps): JSX.Element => {
 
   return (
     <div className={styles.container}>
-      {/* <Link to={`/avs/${av.id}`}> */}
         <img
           key={av.id}  
-          className={styles.avIcon}
+          className={av.status === 'Under Maintenance' ? `${styles.underMaintenance}` : ''}
           id={av.id.toString()}
           src={avIcon} 
           alt="Vehicle Icon" 

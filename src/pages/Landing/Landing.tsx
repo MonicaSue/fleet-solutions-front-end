@@ -20,8 +20,23 @@ const Landing = (props: LandingProps): JSX.Element => {
   return (
     <>
       {user ? (
-        <main className={styles.loggedInContainer}>
-          <h1>hello, {user ? user.name : 'friend'}</h1>
+        <main className={styles.loggedInBackground}>
+          <div className={styles.loggedInContainer}>
+            <div className={styles.intro}>
+              <div className={styles.content}>
+                <h1>Hello, {user && user.name}</h1>
+                <h3>Review Your:</h3>
+              </div>
+              <div className={styles.buttonContainer}>
+                <NavLink to="/avs">
+                  <Button variant="outlined" className={styles.landingButton}>Fleet</Button>
+                </NavLink>
+                <NavLink to="/reports">
+                  <Button variant="outlined" className={styles.landingButton}>Reports</Button>
+                </NavLink>
+              </div>
+            </div>
+          </div>
         </main>
       ):(
         <main className={styles.loggedOutBackground}>
@@ -30,7 +45,7 @@ const Landing = (props: LandingProps): JSX.Element => {
               <div className={styles.content}>
                 <h1>Fleet Solutions</h1>
               </div>
-              <div className={styles.loggedOutButtonContainer}>
+              <div className={styles.buttonContainer}>
                 <NavLink to="/auth/login">
                   <Button variant="outlined" className={styles.landingButton}>Log In</Button>
                 </NavLink>
