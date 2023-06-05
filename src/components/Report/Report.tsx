@@ -30,7 +30,6 @@ const Report = (props: ReportProps) => {
     vehicleNo: '',
     status: '',
   })
-  console.log(formData)
   
   useEffect((): void => {
     const fetchDetails = async (): Promise<void> => {
@@ -98,6 +97,7 @@ const Report = (props: ReportProps) => {
           <h1>Select an AV</h1>
         )}
         <h1>AV Log</h1>
+        <h3>Performance Report</h3>
     </>
   )
 }

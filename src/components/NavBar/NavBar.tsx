@@ -40,6 +40,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
             <ul className={styles.linkContainer}>
               <li>FleetSolutions</li>
               <li><NavLink to="/avs">AVs</NavLink></li>
+              <li><NavLink to="/dashboard">Dashboard</NavLink></li>
               {user.role === 'Admin' ?
               <li><NavLink to="/profiles">Profiles</NavLink></li>
               :

@@ -1,5 +1,6 @@
 // npm
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // services
 import * as avService from '../../services/avService'
@@ -25,7 +26,8 @@ const Avs = (props: AvsProps): JSX.Element => {
   
   const [avs, setAvs] = useState<Av[]>([])
   const [selectedAvId, setSelectedAvId] = useState<string>('')
-  
+  const navigate = useNavigate()
+
   useEffect((): void => {
     const fetchAvs = async (): Promise<void> => {
       try {
@@ -41,6 +43,7 @@ const Avs = (props: AvsProps): JSX.Element => {
   const handleDeleteAv = async (avId: number) => {
     const deletedAv = await avService.deleteAv(avId)
     setAvs(avs.filter((av) => av.id !== deletedAv.id))
+    navigate('/avs')
   }
 
   return (

@@ -31,8 +31,8 @@ const Landing = (props: LandingProps): JSX.Element => {
                 <NavLink to="/avs">
                   <Button variant="outlined" className={styles.landingButton}>Fleet</Button>
                 </NavLink>
-                <NavLink to="/reports">
-                  <Button variant="outlined" className={styles.landingButton}>Reports</Button>
+                <NavLink to="/dashboard">
+                  <Button variant="outlined" className={styles.landingButton}>Dashboard</Button>
                 </NavLink>
               </div>
             </div>
