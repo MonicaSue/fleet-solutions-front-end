@@ -9,9 +9,8 @@ import { User } from '../../types/models'
 import styles from './NavBar.module.css'
 
 // mui
-
-// import { ClickAwayListener, IconButton, MenuList, Popper, Paper, MenuItem } from '@mui/material'
-// import PersonIcon from '@mui/icons-material/Person'
+import { ClickAwayListener, IconButton, MenuList, Popper, Paper, MenuItem } from '@mui/material'
+import PersonIcon from '@mui/icons-material/Person'
 
 interface NavBarProps {
   user: User | null;
@@ -21,18 +20,18 @@ interface NavBarProps {
 const NavBar = (props: NavBarProps): JSX.Element => {
   const { user, handleLogout } = props
 
-  // const [open, setOpen] = useState(false)
-  // const anchorRef = useRef(null)
+  const [open, setOpen] = useState<boolean>(false)
+  const anchorRef = useRef(null)
 
-  // const handleClick = () => {
-  //   setOpen((prevOpen) => !prevOpen)
-  // }
-  // const handleClose = (event) => {
-  //   if (anchorRef.current && anchorRef.current.contains(event.target)) {
-  //     return
-  //   }
-  //   setOpen(false)
-  // }
+  const handleClick = () => {
+    setOpen((prevOpen) => !prevOpen)
+  }
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return
+    }
+    setOpen(false)
+  }
   
   return (
     <>
@@ -42,14 +41,43 @@ const NavBar = (props: NavBarProps): JSX.Element => {
               <li>FleetSolutions</li>
               <li><NavLink to="/avs">AVs</NavLink></li>
               <li><NavLink to="/profiles">Profiles</NavLink></li>
-              <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-              <li><NavLink to="/auth/change-password">Change Password</NavLink></li>
             </ul>
-          {/* :
-            <ul>
-              <li><NavLink to="/auth/login">Log In</NavLink></li>
-              <li><NavLink to="/auth/signup">Sign Up</NavLink></li>
-            </ul> */}
+            <div className={styles.profile}>
+              <IconButton
+                ref={anchorRef}
+                id="button"
+                aria-controls={open ? 'menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                variant="outlined"
+                color="neutral"
+                onClick={handleClick}
+              >
+                <PersonIcon className={styles.personIcon}/>
+                <em>{user.role}</em>
+              </IconButton>
+              <Popper
+                id="menu"
+                anchorEl={anchorRef.current}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="button"
+                placement="bottom-end"
+              >
+                <ClickAwayListener onClickAway={handleClose}>
+                  <Paper>
+                    <MenuList>
+                      <NavLink to="/auth/change-password" className={styles.loggedIn}>
+                        <MenuItem onClick={handleClose}>Change Password</MenuItem>
+                      </NavLink>
+                      <NavLink to="" onClick={handleLogout} className={styles.loggedIn}>
+                        <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                      </NavLink>
+                    </MenuList>
+                  </Paper>
+                </ClickAwayListener>
+              </Popper>
+            </div>
         </nav>
       ):(
         ''
