@@ -42,3 +42,11 @@
 .select:focus {
   outline: none;
 }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 300px;
+  gap: 10px;
+}

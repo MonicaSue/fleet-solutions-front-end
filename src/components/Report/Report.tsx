@@ -15,11 +15,12 @@ import { Button } from '@mui/material'
 
 interface ReportProps {
   selectedAvId: string
+  handleDeleteAv: (avId: number) => Promise<void>
 }
 
 
 const Report = (props: ReportProps) => {
-  const { selectedAvId } = props
+  const { selectedAvId, handleDeleteAv } = props
 
   const avId = parseInt(selectedAvId)
 
@@ -49,6 +50,8 @@ const Report = (props: ReportProps) => {
     // evt.preventDefault()
     await avService.update(formData, avId)
   }
+
+  
   
   return (
     <>
@@ -82,7 +85,10 @@ const Report = (props: ReportProps) => {
                     <option value="Retired">Retired</option>
                   </select>
                 </fieldset>
-                <Button onClick={handleSubmit} type="submit" variant="contained">Save</Button>
+                <div className={styles.buttons}>
+                  <Button onClick={handleSubmit} type="submit" variant="contained">Save</Button>
+                  <Button onClick={() => handleDeleteAv(avId)} variant="contained">Delete</Button>
+                </div>
               </form>
             </div>
           ):( 

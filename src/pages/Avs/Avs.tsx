@@ -32,6 +32,11 @@ const Avs = (): JSX.Element => {
     fetchAvs()
   }, [])
 
+  const handleDeleteAv = async (avId: number) => {
+    const deletedAv = await avService.deleteAv(avId)
+    setAvs(avs.filter((av) => av.id !== deletedAv.id))
+  }
+
   return (
     <main className={styles.container}>
       <div className={styles.searchAdd}>
@@ -42,7 +47,7 @@ const Avs = (): JSX.Element => {
           <AvCardContainer avs={avs} setSelectedAvId={setSelectedAvId} />
         </div>
         <div className={styles.report}>
-          <Report selectedAvId={selectedAvId}/>
+          <Report selectedAvId={selectedAvId} handleDeleteAv={handleDeleteAv}/>
         </div>
       </div>
     </main>

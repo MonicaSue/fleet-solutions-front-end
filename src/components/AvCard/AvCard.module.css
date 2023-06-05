@@ -19,12 +19,17 @@
 
 .inactive {
   filter: drop-shadow(0 0 1rem #e23);
+  cursor: pointer;
 }
 
 .underMaintenance {
   filter: drop-shadow(0 0 1rem rgb(255, 238, 0));
+  cursor: pointer;
 }
 
 .retired {
   filter: drop-shadow(0 0 1rem rgb(9, 9, 9));
+  cursor: pointer;
 }
+
+
