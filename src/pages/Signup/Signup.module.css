@@ -63,10 +63,50 @@ select {
   margin-bottom: 8px;
 }
 
-.button {
-  margin-left: 16px;
-}
-
 .form > label:last-of-type {
   margin-bottom: 16px;
+}
+
+.input {
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.select {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 300px;
+  gap: 10px;
+}
+
+
+.button {
+  margin-left: 16px;
+  border-radius: 5px;
+  border: #1976D2 solid 1px;
+  color: #1976D2;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 14px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.button:hover {
+  border: #2196f3 solid 2px;
 }

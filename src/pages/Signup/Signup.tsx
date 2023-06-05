@@ -8,6 +8,9 @@ import * as authService from '../../services/authService'
 // css
 import styles from './Signup.module.css'
 
+// mui
+import { Button } from '@mui/material'
+
 
 // types
 import { SignupFormData, PhotoFormData } from '../../types/forms'
@@ -94,65 +97,72 @@ const Signup = (props: AuthPageProps): JSX.Element => {
         <h1>Sign Up</h1>
         <p className={styles.message}>{message}</p>
         <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
-          <label className={styles.label}>
-            Name
-            <input type="text" value={name} name="name" onChange={handleChange} />
-          </label>
-          <label className={styles.label}>
-            Email
+          <fieldset>
+            <legend>Name</legend>
+            <input type="text" value={name} name="name" onChange={handleChange} className={styles.input}/>
+          </fieldset>
+          <fieldset>
+            <legend>Email</legend>
             <input
               type="text"
               value={email}
               name="email"
               onChange={handleChange}
+              className={styles.input}
             />
-          </label>
-          <label className={styles.label}>
-            Role
+          </fieldset>
+          <fieldset>
+            <legend>Role</legend>
             <select
               name="role"
               value={role}
               onChange={handleChange}
+              className={styles.select}
             >
               <option value="Admin">Admin</option>
               <option value="Driver">Driver</option>
               <option value="Mechanic">Mechanic</option>
             </select>
-          </label>
-          <label className={styles.label}>
-            Password
+          </fieldset>
+          <fieldset>
+            <legend>Password</legend>
             <input
               type="password"
               value={password}
               name="password"
               onChange={handleChange}
+              className={styles.input}
             />
-          </label>
-          <label className={styles.label}>
-            Confirm Password
+          </fieldset>
+          <fieldset>
+            <legend>Confirm Password</legend>
             <input
               type="password"
               value={passwordConf}
               name="passwordConf"
               onChange={handleChange}
+              className={styles.input}
             />
-          </label>
-          <label className={styles.label}>
-            Upload Photo
+          </fieldset>
+          <fieldset>
+            <legend>Upload Photo</legend>
             <input 
               type="file" 
               name="photo" 
               onChange={handleChangePhoto}
               ref={imgInputRef}
+              className={styles.input}
             />
-          </label>
-          <div>
-            <Link to="/">Cancel</Link>
+          </fieldset>
+          <div className={styles.buttons}>
+            <Link to="/">
+              <button className={styles.button}>CANCEL</button>
+            </Link>
             <button
               className={styles.button}
               disabled={ isFormInvalid() || isSubmitted }
             >
-              {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
+              {!isSubmitted ? 'SIGN UP' : '🚀 Sending...'}
             </button>
           </div>
         </form>
