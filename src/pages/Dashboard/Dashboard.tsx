@@ -96,7 +96,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
             <div className={styles.statIcon}>
-              <img src={distanceIcon} alt="Av Icon" />
+              <img src={distanceIcon} alt="Distance Icon" />
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
@@ -111,7 +111,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
             <div className={styles.statIcon}>
-              <img src={takeoverIcon} alt="Av Icon" />
+              <img src={takeoverIcon} alt="Steering Wheel Icon" />
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
@@ -126,7 +126,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
             <div className={styles.statIcon}>
-              <img src={serviceIcon} alt="Av Icon" />
+              <img src={serviceIcon} alt="Maintenance Icon" />
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
@@ -141,7 +141,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
             <div className={styles.statIcon}>
-              <img src={partsIcon} alt="Av Icon" />
+              <img src={partsIcon} alt="Parts Icon" />
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
@@ -156,7 +156,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
             <div className={styles.statIcon}>
-              <img src={costIcon} alt="Av Icon" />
+              <img src={costIcon} alt="Dollar Icon" />
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
