@@ -72,7 +72,7 @@ const Dashboard = (props: DashboardProps) => {
   return (
     <main className={styles.container}>
       <div className={styles.header}>
-        <h1>{user.role} Dashboard</h1>
+        <h1>{user ? user.role : ''} Dashboard</h1>
         <Button className={styles.button} onClick={refreshPage}>
           <RefreshIcon />
         </Button>
