@@ -18,6 +18,7 @@ export interface Performance {
   notes: string;
   profileId: number;
   avId: number;
+  id: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -31,6 +32,7 @@ export interface Maintenance {
   maintenanceStatus: string;
   profileId: number;
   avId: number;
+  id: number;
   createdAt: string;
   updatedAt: string;
 }

@@ -11,7 +11,6 @@ import Takeovers from '../../components/DashboardCalcs/Takeovers';
 import MilesDriven from '../../components/DashboardCalcs/MilesDriven';
 import ServiceBacklog from '../../components/DashboardCalcs/ServiceBacklog';
 
-
 // assets
 import avIcon from '../../assets/icons/avIcon.png'
 import distanceIcon from '../../assets/icons/distance.png'
@@ -19,7 +18,6 @@ import takeoverIcon from '../../assets/icons/takeover.png'
 import serviceIcon from '../../assets/icons/service.png'
 import costIcon from '../../assets/icons/dollar.png'
 import partsIcon from '../../assets/icons/parts.png'
-import reload from '../../assets/icons/reload.png'
 
 // css
 import styles from './Dashboard.module.css'
