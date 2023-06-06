@@ -7,8 +7,11 @@ import * as avService from '../../services/avService'
 // types
 import { AvFormData } from '../../types/forms'
 
+// styles
+import styles from './NewAvFrom.module.css'
+
 // mui
-import { Button, IconButton, TextField, Select, InputLabel, MenuItem, Dialog, DialogActions, DialogContent, DialogTitle, FormControl } from "@mui/material"
+import { Button, IconButton, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material"
 import AddBoxIcon from '@mui/icons-material/AddBox';
 
 
@@ -52,33 +55,32 @@ const NewAvForm = (): JSX.Element => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add a New AV to your Fleet</DialogTitle>
         <DialogContent>
-          <form onSubmit={handleSubmit}>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <TextField
+          <form onSubmit={handleSubmit} >
+            <fieldset>
+              <legend>Vehicle Id *</legend>
+              <input
                 name="vehicleNo"
                 type="text"
                 autoComplete="off"
-                margin="normal"
                 required
-                label="Vehicle Number"
                 onChange={handleChange}
+                className={styles.input}
               />
-            </FormControl>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="status-label">Status</InputLabel>
-              <Select
+            </fieldset>
+            <fieldset>
+              <legend>Status *</legend>
+              <select
                 name="status"
-                labelId="status-label"
-                label="Status"
                 required
                 onChange={handleChange}
+                className={styles.select}
               >
-                <MenuItem value={"Active"}>Active</MenuItem>
-                <MenuItem value={"Inactive"}>Inactive</MenuItem>
-                <MenuItem value={"Under Maintenance"}>Under Maintenance</MenuItem>
-                <MenuItem value={"Retired"}>Retired</MenuItem>
-              </Select>
-            </FormControl>
+                <option value={"Active"}>Active</option>
+                <option value={"Inactive"}>Inactive</option>
+                <option value={"Under Maintenance"}>Under Maintenance</option>
+                <option value={"Retired"}>Retired</option>
+              </select>
+            </fieldset>
           </form>
         </DialogContent>
         <DialogActions>

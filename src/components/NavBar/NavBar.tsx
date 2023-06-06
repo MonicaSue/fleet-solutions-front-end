@@ -9,7 +9,7 @@ import { User } from '../../types/models'
 import styles from './NavBar.module.css'
 
 // mui
-import { ClickAwayListener, IconButton, MenuList, Popper, Paper, MenuItem } from '@mui/material'
+import { IconButton, MenuList, Popper, Paper, MenuItem } from '@mui/material'
 import PersonIcon from '@mui/icons-material/Person'
 
 interface NavBarProps {
@@ -26,8 +26,10 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   const handleClick = (): void => {
     setOpen((prevOpen) => !prevOpen)
   }
-  const handleClose = (event: React.MouseEvent): void => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+
+  const handleClose = (event: React.MouseEvent<HTMLElement>): void => {
+    console.log(event)
+    if (anchorRef.current && !anchorRef.current) {
       return
     }
     setOpen(false)
@@ -54,22 +56,20 @@ const NavBar = (props: NavBarProps): JSX.Element => {
                 aria-controls={open ? 'menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
-                variant="outlined"
-                color="neutral"
                 onClick={handleClick}
               >
                 <PersonIcon className={styles.personIcon}/>
                 <em>{user.role}</em>
               </IconButton>
-              <Popper
-                id="menu"
-                anchorEl={anchorRef.current}
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="button"
-                placement="bottom-end"
-              >
-                <ClickAwayListener onClickAway={handleClose}>
+              {anchorRef.current && 
+                <Popper
+                  id="menu"
+                  anchorEl={anchorRef.current}
+                  open={open}
+                  onClick={handleClose}
+                  aria-labelledby="button"
+                  placement="bottom-end"
+                >
                   <Paper>
                     <MenuList>
                       <NavLink to="/auth/change-password" className={styles.loggedIn}>
@@ -80,8 +80,8 @@ const NavBar = (props: NavBarProps): JSX.Element => {
                       </NavLink>
                     </MenuList>
                   </Paper>
-                </ClickAwayListener>
-              </Popper>
+                </Popper>
+              }
             </div>
         </nav>
       ):(

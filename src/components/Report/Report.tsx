@@ -101,6 +101,7 @@ const Report = (props: ReportProps) => {
         )}
         <h1>AV Log</h1>
         <h3>Performance Report</h3>
+        { user ? user.role : ''}
     </>
   )
 }

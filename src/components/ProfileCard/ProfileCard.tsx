@@ -20,7 +20,6 @@ const ProfileCard = (props: ProfileCardProps): JSX.Element => {
     <article className={styles.article}>
       <img src={profilePic} alt={`${profile.name}'s avatar`} className={styles.profile}/>
       <h1>{profile.name}</h1>
-      <h3>{profile.role}</h3>
     </article>
   )
 }

@@ -8,8 +8,6 @@ import * as authService from '../../services/authService'
 // css
 import styles from './Signup.module.css'
 
-// mui
-import { Button } from '@mui/material'
 
 
 // types

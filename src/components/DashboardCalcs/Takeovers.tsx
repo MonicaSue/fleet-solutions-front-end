@@ -16,7 +16,7 @@ const Takeovers = (props: TakeoversProps) => {
     ))
   ))
   
-  const avgTakeovers = !takeovers.total ? 0 : (takeovers.total / avs.length).toFixed(1)
+  // const avgTakeovers = !takeovers.total ? 0 : (takeovers.total / avs.length).toFixed(1)
 
   return (
     <>

@@ -22,8 +22,8 @@ interface StatusIconProps {
 const StatusIcon = (props: StatusIconProps) => {
   const { maintenance } = props
   
-  const status = maintenance.maintenanceStatus.replaceAll(" ", "")
-  const statusIcon: string = iconTable[status]
+  const status = (maintenance.maintenanceStatus.replaceAll(" ", "")) as string
+  const statusIcon = iconTable[status as keyof typeof iconTable]
   
   return (
     <img className={styles.statusIcon}  src={statusIcon} alt="Status Icon" height="24px"/>

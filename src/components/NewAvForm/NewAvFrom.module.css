@@ -1,0 +1,23 @@
+.input {
+  margin: 0;
+  margin-left: 7px;
+  border: none;
+  padding: 5px;
+  color: black;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.select {
+  width: 300px;
+  margin-left: 7px;
+  border: none;
+  padding: 5px;
+  color: black;
+}
+
+.select:focus {
+  outline: none;
+}
