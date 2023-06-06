@@ -1,7 +1,7 @@
 // assets
 import Completed from '../../assets/icons/completed.png'
 import InProgress from '../../assets/icons/inProgress.png'
-import InQueue from '../../assets/icons/InQueue.png'
+import InQueue from '../../assets/icons/inQueue.png'
 
 // css
 import styles from '../../pages/Dashboard/Dashboard.module.css'
