@@ -34,8 +34,10 @@ const Report = (props: ReportProps) => {
   useEffect((): void => {
     const fetchDetails = async (): Promise<void> => {
       try {
-        const avData = await avService.show(avId)
-        setFormData(avData)
+        if (avId) {
+          const avData = await avService.show(avId)
+          setFormData(avData)
+        }
       } catch (error) {
         console.log(error)
       }
@@ -47,8 +49,9 @@ const Report = (props: ReportProps) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value})
   }
 
-  const handleSubmit = async (evt: React.FormEvent) => {
+  const handleSubmit = async () => {
     // evt.preventDefault()
+    console.log(formData)
     await avService.update(formData, avId)
   }
 
@@ -69,7 +72,7 @@ const Report = (props: ReportProps) => {
                   value={formData.vehicleNo}
                   autoComplete='off'
                   required
-                  onChange={handleChange}
+                  onChange={(evt) => handleChange(evt)}
                   className={styles.input}
                 />
               </fieldset>
@@ -79,7 +82,7 @@ const Report = (props: ReportProps) => {
                   name="status"
                   value={formData.status} 
                   className={styles.select}
-                  onChange={handleChange}
+                  onChange={(evt) => handleChange(evt)}
                 >
                   <option value="Active">Active</option>
                   <option value="Inactive">Inactive</option>

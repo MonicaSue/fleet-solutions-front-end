@@ -1,6 +1,3 @@
-// npm
-import { Link } from 'react-router-dom'
-
 // types
 import { Av } from '../../types/models'
 

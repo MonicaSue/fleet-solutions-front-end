@@ -7,6 +7,8 @@ export interface Av {
   id: number;
   createdAt: string;
   updatedAt: string;
+  maintenances: Maintenance[];
+  performances: Performance[];
 }
 
 export interface Performance {

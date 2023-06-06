@@ -74,12 +74,16 @@
 
 thead {
   display: table-header-group;
-  vertical-align: middle;
+  vertical-align: top;
+  text-align: left;
+  
+
 }
 
 th {
   padding: 12px 10px 12px 24px;
   color: grey;
+  border-bottom: 1px solid grey;
 }
 
 tbody {
@@ -94,4 +98,10 @@ td {
 p {
   font-size: 14px;
   font-weight: 700;
+}
+
+@media screen and (min-width: 500px) {
+  .maintenanceContainer {
+    overflow-x: scroll;
+  }
 }

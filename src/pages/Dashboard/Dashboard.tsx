@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 // services
 import * as dashboardService from '../../services/dashboardService'
 
+// components
+import StatusIcon from '../../components/StatusIcon/StatusIcon';
+
 // assets
 import avIcon from '../../assets/icons/avIcon.png'
 
@@ -104,8 +107,13 @@ const Dashboard = (props: DashboardProps) => {
                   <tr key={maintenance.id}>
                     <td><p>{av.vehicleNo}</p></td>
                     <td><p>{maintenance.type}</p></td>
-                    <td><p>{av.vehicleNo}</p></td>
-                    <td><p>{maintenance.maintenanceStatus}</p></td>
+                    <td><p>${maintenance.partsCost + maintenance.laborCost}</p></td>
+                    <td>
+                      <div>
+                        <StatusIcon maintenance={maintenance}/>
+                        <p>{maintenance.maintenanceStatus}</p>
+                      </div>
+                    </td>
                     <td><p>{maintenance.date}</p></td>
                   </tr>
                 ))}
