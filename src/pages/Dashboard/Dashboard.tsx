@@ -81,7 +81,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
             <div className={styles.statIcon}>
-              <img src={avIcon} alt="Av Icon" />
+              <img src={avIcon} alt="Vehicle Icon" />
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
