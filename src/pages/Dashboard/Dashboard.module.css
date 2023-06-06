@@ -61,7 +61,7 @@
   margin-bottom: 20px;
 }
 
-.maintenanceContainer {
+.tableContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -100,8 +100,31 @@ p {
   font-weight: 700;
 }
 
+.status {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.statusIcon {
+  height: 24px;
+  width: 24px;
+}
+
+@media screen and (min-width: 1200px) {
+  .mid {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mid {
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+}
+
 @media screen and (min-width: 500px) {
-  .maintenanceContainer {
+  .tableContainer {
     overflow-x: scroll;
   }
 }

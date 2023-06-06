@@ -6,6 +6,8 @@ import * as dashboardService from '../../services/dashboardService'
 
 // components
 import StatusIcon from '../../components/StatusIcon/StatusIcon';
+import Takeovers from '../../components/DashboardCalcs/Takeovers';
+import MilesDriven from '../../components/DashboardCalcs/MilesDriven';
 
 // assets
 import avIcon from '../../assets/icons/avIcon.png'
@@ -25,7 +27,6 @@ const Dashboard = (props: DashboardProps) => {
   const { user } = props
 
   const [avs, setAvs] = useState<Av[]>([])
-  console.log(avs)
 
   useEffect((): void => {
     const fetchAvs = async (): Promise<void> => {
@@ -64,10 +65,10 @@ const Dashboard = (props: DashboardProps) => {
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
-                Fleet Size
+                Total Miles Driven
               </div>
               <div className={styles.statNumber}>
-                {avs.length}
+              <MilesDriven avs={avs} />
               </div>
             </div>
           </div>
@@ -79,17 +80,17 @@ const Dashboard = (props: DashboardProps) => {
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
-                Fleet Size
+                Total Takeovers
               </div>
               <div className={styles.statNumber}>
-                {avs.length}
+                <Takeovers avs={avs} />
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.mid}>
-        <div className={styles.maintenanceContainer}>
+        <div className={styles.tableContainer}>
           <h2>Maintenance Report</h2>
           <table>
             <thead>
@@ -109,7 +110,7 @@ const Dashboard = (props: DashboardProps) => {
                     <td><p>{maintenance.type}</p></td>
                     <td><p>${maintenance.partsCost + maintenance.laborCost}</p></td>
                     <td>
-                      <div>
+                      <div className={styles.status}>
                         <StatusIcon maintenance={maintenance}/>
                         <p>{maintenance.maintenanceStatus}</p>
                       </div>
@@ -120,7 +121,7 @@ const Dashboard = (props: DashboardProps) => {
               </tbody>
               ))}
           </table>
-
+          
         </div>
       </div>
     </main>

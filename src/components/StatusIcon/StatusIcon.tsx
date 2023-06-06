@@ -3,6 +3,9 @@ import Completed from '../../assets/icons/check.png'
 import InProgress from '../../assets/icons/inProgress.png'
 import InQueue from '../../assets/icons/InQueue.png'
 
+// css
+import styles from '../../pages/Dashboard/Dashboard.module.css'
+
 // types
 import { Maintenance } from '../../types/models'
 
@@ -23,7 +26,7 @@ const StatusIcon = (props: StatusIconProps) => {
   const statusIcon: string = iconTable[status]
   
   return (
-    <img src={statusIcon} alt="Status Icon" />
+    <img className={styles.statusIcon}  src={statusIcon} alt="Status Icon" height="24px"/>
   )
 }
 
