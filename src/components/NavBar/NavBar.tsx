@@ -61,27 +61,25 @@ const NavBar = (props: NavBarProps): JSX.Element => {
                 <PersonIcon className={styles.personIcon}/>
                 <em>{user.role}</em>
               </IconButton>
-              {anchorRef.current && 
-                <Popper
-                  id="menu"
-                  anchorEl={anchorRef.current}
-                  open={open}
-                  onClick={handleClose}
-                  aria-labelledby="button"
-                  placement="bottom-end"
-                >
-                  <Paper>
-                    <MenuList>
-                      <NavLink to="/auth/change-password" className={styles.loggedIn}>
-                        <MenuItem onClick={handleClose}>Change Password</MenuItem>
-                      </NavLink>
-                      <NavLink to="" onClick={handleLogout} className={styles.loggedIn}>
-                        <MenuItem onClick={handleClose}>Log Out</MenuItem>
-                      </NavLink>
-                    </MenuList>
-                  </Paper>
-                </Popper>
-              }
+              <Popper
+                id="menu"
+                anchorEl={anchorRef.current}
+                open={open}
+                onClick={handleClose}
+                aria-labelledby="button"
+                placement="bottom-end"
+              >
+                <Paper>
+                  <MenuList>
+                    <NavLink to="/auth/change-password" className={styles.loggedIn}>
+                      <MenuItem onClick={handleClose}>Change Password</MenuItem>
+                    </NavLink>
+                    <NavLink to="" onClick={handleLogout} className={styles.loggedIn}>
+                      <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                    </NavLink>
+                  </MenuList>
+                </Paper>
+              </Popper>
             </div>
         </nav>
       ):(
