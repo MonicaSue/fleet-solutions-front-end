@@ -1,5 +1,6 @@
 // npm
 import { useState, useEffect } from 'react';
+import moment from 'moment';
 
 // services
 import * as dashboardService from '../../services/dashboardService'
@@ -8,12 +9,24 @@ import * as dashboardService from '../../services/dashboardService'
 import StatusIcon from '../../components/StatusIcon/StatusIcon';
 import Takeovers from '../../components/DashboardCalcs/Takeovers';
 import MilesDriven from '../../components/DashboardCalcs/MilesDriven';
+import ServiceBacklog from '../../components/DashboardCalcs/ServiceBacklog';
+
 
 // assets
 import avIcon from '../../assets/icons/avIcon.png'
+import distanceIcon from '../../assets/icons/distance.png'
+import takeoverIcon from '../../assets/icons/takeover.png'
+import serviceIcon from '../../assets/icons/service.png'
+import costIcon from '../../assets/icons/dollar.png'
+import partsIcon from '../../assets/icons/parts.png'
+import reload from '../../assets/icons/reload.png'
 
 // css
 import styles from './Dashboard.module.css'
+
+// mui
+import { Button } from '@mui/material';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 // types
 import { Av } from '../../types/models'
@@ -40,8 +53,32 @@ const Dashboard = (props: DashboardProps) => {
     fetchAvs()
   }, [])
 
+  const refreshPage = (): void => {
+    window.location.reload()
+  }
+
+  const totalServiceCost = {parts: 0, labor: 0}
+
+  avs.map((av) => (
+    av.maintenances.map((maintenance) => (
+      maintenance.partsCost ? totalServiceCost.parts += maintenance.partsCost : totalServiceCost.parts += 0
+    ))
+  ))
+
+  avs.map((av) => (
+    av.maintenances.map((maintenance) => (
+      maintenance.laborCost ? totalServiceCost.labor += maintenance.laborCost : totalServiceCost.labor += 0
+    ))
+  ))
+
   return (
     <main className={styles.container}>
+      <div className={styles.header}>
+        <h1>{user.role} Dashboard</h1>
+        <Button className={styles.button} onClick={refreshPage}>
+          <RefreshIcon />
+        </Button>
+      </div>
       <div className={styles.top}>
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
@@ -61,7 +98,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
             <div className={styles.statIcon}>
-              <img src={avIcon} alt="Av Icon" />
+              <img src={distanceIcon} alt="Av Icon" />
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
@@ -76,7 +113,7 @@ const Dashboard = (props: DashboardProps) => {
         <div className={styles.statBox}>
           <div className={styles.statContainer}>
             <div className={styles.statIcon}>
-              <img src={avIcon} alt="Av Icon" />
+              <img src={takeoverIcon} alt="Av Icon" />
             </div>
             <div className={styles.stat}>
               <div className={styles.statLabel}>
@@ -84,6 +121,51 @@ const Dashboard = (props: DashboardProps) => {
               </div>
               <div className={styles.statNumber}>
                 <Takeovers avs={avs} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.statBox}>
+          <div className={styles.statContainer}>
+            <div className={styles.statIcon}>
+              <img src={serviceIcon} alt="Av Icon" />
+            </div>
+            <div className={styles.stat}>
+              <div className={styles.statLabel}>
+                Service Backlog
+              </div>
+              <div className={styles.statNumber}>
+                <ServiceBacklog avs={avs} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.statBox}>
+          <div className={styles.statContainer}>
+            <div className={styles.statIcon}>
+              <img src={partsIcon} alt="Av Icon" />
+            </div>
+            <div className={styles.stat}>
+              <div className={styles.statLabel}>
+                Total Parts Cost
+              </div>
+              <div className={styles.statNumber}>
+              ${(totalServiceCost.parts).toLocaleString()}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.statBox}>
+          <div className={styles.statContainer}>
+            <div className={styles.statIcon}>
+              <img src={costIcon} alt="Av Icon" />
+            </div>
+            <div className={styles.stat}>
+              <div className={styles.statLabel}>
+                Total Labor Cost
+              </div>
+              <div className={styles.statNumber}>
+              ${(totalServiceCost.labor).toLocaleString()}
               </div>
             </div>
           </div>
@@ -99,7 +181,7 @@ const Dashboard = (props: DashboardProps) => {
                 <th>TYPE</th>
                 <th>TOTAL COST</th>
                 <th>STATUS</th>
-                <th>DATE</th>
+                <th>CREATION DATE</th>
               </tr>
             </thead>
             {avs.map((av) => (
@@ -115,7 +197,7 @@ const Dashboard = (props: DashboardProps) => {
                         <p>{maintenance.maintenanceStatus}</p>
                       </div>
                     </td>
-                    <td><p>{maintenance.date}</p></td>
+                    <td><p>{moment.utc(maintenance.createdAt).format('D MMM YYYY')}</p></td>
                   </tr>
                 ))}
               </tbody>

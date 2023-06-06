@@ -18,6 +18,8 @@ export interface Performance {
   notes: string;
   profileId: number;
   avId: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Maintenance {
@@ -29,6 +31,8 @@ export interface Maintenance {
   maintenanceStatus: string;
   profileId: number;
   avId: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 /* ---------===== auth models =====--------- */

@@ -1,5 +1,5 @@
 // assets
-import Completed from '../../assets/icons/check.png'
+import Completed from '../../assets/icons/completed.png'
 import InProgress from '../../assets/icons/inProgress.png'
 import InQueue from '../../assets/icons/InQueue.png'
 
