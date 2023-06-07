@@ -9,6 +9,7 @@ import * as dashboardService from '../../services/dashboardService'
 import StatusIcon from '../../components/StatusIcon/StatusIcon';
 import PerformanceKpi from '../../components/DashboardComponents/PerformanceKpi';
 import MaintenanceKpi from '../../components/DashboardComponents/MaintenanceKpi';
+import MaintenanceTable from '../../components/DashboardComponents/MaintenanceTable';
 
 // css
 import styles from './Dashboard.module.css'
@@ -22,7 +23,7 @@ import { Av } from '../../types/models'
 import { User } from '../../types/models'
 
 interface DashboardProps {
-  user: User | null;
+  user: User;
 }
 
 const Dashboard = (props: DashboardProps): JSX.Element => {
@@ -56,7 +57,9 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         </Button>
       </div>
       <div className={styles.top}>
-        <PerformanceKpi avs={avs}/>
+        {user.role === 'Mechanic' ? <></> :
+          <PerformanceKpi avs={avs}/>
+        }
         <MaintenanceKpi avs={avs}/>
       </div>
       <div className={styles.mid}>
@@ -91,8 +94,8 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
               </tbody>
               ))}
           </table>
-          
         </div>
+        <MaintenanceTable avs={avs}/>
       </div>
     </main>
   )

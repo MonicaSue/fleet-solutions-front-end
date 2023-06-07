@@ -17,6 +17,13 @@ export interface PerformanceFormData {
   notes: string;
 }
 
+export interface UpdatePerformanceFormData {
+  takeover: number;
+  distance: number;
+  date: string;
+  notes: string;
+}
+
 export interface MaintenanceFormData {
   type: string;
   maintenanceStatus: string;
@@ -26,6 +33,14 @@ export interface MaintenanceFormData {
   notes: string;
 }
 
+export interface UpdateMaintenanceFormData {
+  type: string;
+  maintenanceStatus: string;
+  partsCost: number;
+  laborCost: number;
+  date: string;
+  notes: string;
+}
 
 /* ---------===== auth forms =====--------- */
 

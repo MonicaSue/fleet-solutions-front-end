@@ -27,8 +27,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
     setOpen((prevOpen) => !prevOpen)
   }
 
-  const handleClose = (event: React.MouseEvent<HTMLElement>): void => {
-    console.log(event)
+  const handleClose = (): void => {
     if (anchorRef.current && !anchorRef.current) {
       return
     }
@@ -40,14 +39,18 @@ const NavBar = (props: NavBarProps): JSX.Element => {
       {user ? (
         <nav className={styles.navContainer}>
             <ul className={styles.linkContainer}>
-              <li>FleetSolutions</li>
-              <li><NavLink to="/avs">AVs</NavLink></li>
-              <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-              {user.role === 'Admin' ?
-              <li><NavLink to="/profiles">Profiles</NavLink></li>
-              :
-              ''
-              }
+              <div className={styles.logo}>
+                <li><NavLink to="/">FleetSolutions</NavLink></li>
+              </div>
+              <div className={styles.navLinks}>
+                <li><NavLink to="/avs">AVs</NavLink></li>
+                <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                {user.role === 'Admin' ?
+                  <li><NavLink to="/profiles">Profiles</NavLink></li>
+                :
+                  ''
+                }
+              </div>
             </ul>
             <div className={styles.profile}>
               <IconButton
