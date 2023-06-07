@@ -7,15 +7,8 @@ import * as dashboardService from '../../services/dashboardService'
 
 // components
 import StatusIcon from '../../components/StatusIcon/StatusIcon';
-import Takeovers from '../../components/DashboardCalcs/Takeovers';
-import MilesDriven from '../../components/DashboardCalcs/MilesDriven';
+import PerformanceKpi from '../../components/DashboardComponents/PerformanceKpi';
 import MaintenanceKpi from '../../components/DashboardComponents/MaintenanceKpi';
-
-// assets
-import avIcon from '../../assets/icons/avIcon.png'
-import distanceIcon from '../../assets/icons/distance.png'
-import takeoverIcon from '../../assets/icons/takeover.png'
-
 
 // css
 import styles from './Dashboard.module.css'
@@ -53,19 +46,6 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
     window.location.reload()
   }
 
-  const totalServiceCost = {parts: 0, labor: 0}
-
-  avs.map((av) => (
-    av.maintenances.map((maintenance) => (
-      maintenance.partsCost ? totalServiceCost.parts += maintenance.partsCost : totalServiceCost.parts += 0
-    ))
-  ))
-
-  avs.map((av) => (
-    av.maintenances.map((maintenance) => (
-      maintenance.laborCost ? totalServiceCost.labor += maintenance.laborCost : totalServiceCost.labor += 0
-    ))
-  ))
 
   return (
     <main className={styles.container}>
@@ -76,51 +56,7 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         </Button>
       </div>
       <div className={styles.top}>
-        <div className={styles.statBox}>
-          <div className={styles.statContainer}>
-            <div className={styles.statIcon}>
-              <img src={avIcon} alt="Vehicle Icon" />
-            </div>
-            <div className={styles.stat}>
-              <div className={styles.statLabel}>
-                Fleet Size
-              </div>
-              <div className={styles.statNumber}>
-                {avs.length}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.statBox}>
-          <div className={styles.statContainer}>
-            <div className={styles.statIcon}>
-              <img src={distanceIcon} alt="Distance Icon" />
-            </div>
-            <div className={styles.stat}>
-              <div className={styles.statLabel}>
-                Total Miles Driven
-              </div>
-              <div className={styles.statNumber}>
-              <MilesDriven avs={avs} />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.statBox}>
-          <div className={styles.statContainer}>
-            <div className={styles.statIcon}>
-              <img src={takeoverIcon} alt="Steering Wheel Icon" />
-            </div>
-            <div className={styles.stat}>
-              <div className={styles.statLabel}>
-                Total Takeovers
-              </div>
-              <div className={styles.statNumber}>
-                <Takeovers avs={avs} />
-              </div>
-            </div>
-          </div>
-        </div>
+        <PerformanceKpi avs={avs}/>
         <MaintenanceKpi avs={avs}/>
       </div>
       <div className={styles.mid}>
