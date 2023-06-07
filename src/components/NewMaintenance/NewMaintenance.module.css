@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0 auto; */
+  padding: 15px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.input {
+  margin: 0;
+  margin-left: 7px;
+  border: none;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.select {
+  width: 300px;
+  margin-left: 7px;
+  border: none;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.textarea {
+  width: 300px;
+  margin-left: 7px;
+  border: none;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 300px;
+  gap: 10px;
+}

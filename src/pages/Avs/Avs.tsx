@@ -18,7 +18,7 @@ import Report from '../../components/Report/Report';
 import styles from './Avs.module.css'
 
 interface AvsProps {
-  user: User | null;
+  user: User;
 }
 
 const Avs = (props: AvsProps): JSX.Element => {

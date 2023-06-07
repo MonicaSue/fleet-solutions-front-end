@@ -10,6 +10,19 @@ export interface UpdateAvFormData {
   status: string;
 }
 
+// export interface PerformanceFormData {
+
+// }
+
+export interface MaintenanceFormData {
+  type: string;
+  maintenanceStatus: string;
+  partsCost: number;
+  laborCost: number;
+  date: Date;
+  notes: string;
+}
+
 
 /* ---------===== auth forms =====--------- */
 
