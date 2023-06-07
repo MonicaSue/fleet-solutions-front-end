@@ -9,15 +9,13 @@ import * as dashboardService from '../../services/dashboardService'
 import StatusIcon from '../../components/StatusIcon/StatusIcon';
 import Takeovers from '../../components/DashboardCalcs/Takeovers';
 import MilesDriven from '../../components/DashboardCalcs/MilesDriven';
-import ServiceBacklog from '../../components/DashboardCalcs/ServiceBacklog';
+import MaintenanceKpi from '../../components/DashboardComponents/MaintenanceKpi';
 
 // assets
 import avIcon from '../../assets/icons/avIcon.png'
 import distanceIcon from '../../assets/icons/distance.png'
 import takeoverIcon from '../../assets/icons/takeover.png'
-import serviceIcon from '../../assets/icons/service.png'
-import costIcon from '../../assets/icons/dollar.png'
-import partsIcon from '../../assets/icons/parts.png'
+
 
 // css
 import styles from './Dashboard.module.css'
@@ -34,7 +32,7 @@ interface DashboardProps {
   user: User | null;
 }
 
-const Dashboard = (props: DashboardProps) => {
+const Dashboard = (props: DashboardProps): JSX.Element => {
   const { user } = props
 
   const [avs, setAvs] = useState<Av[]>([])
@@ -123,51 +121,7 @@ const Dashboard = (props: DashboardProps) => {
             </div>
           </div>
         </div>
-        <div className={styles.statBox}>
-          <div className={styles.statContainer}>
-            <div className={styles.statIcon}>
-              <img src={serviceIcon} alt="Maintenance Icon" />
-            </div>
-            <div className={styles.stat}>
-              <div className={styles.statLabel}>
-                Service Backlog
-              </div>
-              <div className={styles.statNumber}>
-                <ServiceBacklog avs={avs} />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.statBox}>
-          <div className={styles.statContainer}>
-            <div className={styles.statIcon}>
-              <img src={partsIcon} alt="Parts Icon" />
-            </div>
-            <div className={styles.stat}>
-              <div className={styles.statLabel}>
-                Total Parts Cost
-              </div>
-              <div className={styles.statNumber}>
-              ${(totalServiceCost.parts).toLocaleString()}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.statBox}>
-          <div className={styles.statContainer}>
-            <div className={styles.statIcon}>
-              <img src={costIcon} alt="Dollar" />
-            </div>
-            <div className={styles.stat}>
-              <div className={styles.statLabel}>
-                Total Labor Cost
-              </div>
-              <div className={styles.statNumber}>
-              ${(totalServiceCost.labor).toLocaleString()}
-              </div>
-            </div>
-          </div>
-        </div>
+        <MaintenanceKpi avs={avs}/>
       </div>
       <div className={styles.mid}>
         <div className={styles.tableContainer}>

@@ -1,0 +1,122 @@
+.statBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  padding: 15px 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.statContainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100%;
+  
+}
+
+.statIcon {
+  display: flex;
+  width: 56px;
+  height: 56px;
+}
+
+.statLabel {
+  color: grey;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.statNumber {
+  color: black;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.stat {
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+.mid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  padding: 15px 20px;
+  border-radius: 20px;
+  background-color: white;
+  color: black
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: top;
+  text-align: left;
+  
+
+}
+
+th {
+  padding: 12px 10px 12px 24px;
+  color: grey;
+  border-bottom: 1px solid grey;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+}
+
+td {
+  padding: 8px 24px;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.statusIcon {
+  height: 24px;
+  width: 24px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+}
+
+
+@media screen and (min-width: 1200px) {
+  .mid {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mid {
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .tableContainer {
+    overflow-x: scroll;
+  }
+}

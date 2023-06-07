@@ -7,7 +7,7 @@ interface ServiceBacklogProps {
 
 const ServiceBacklog = (props: ServiceBacklogProps) => {
   const { avs } = props
-  
+
   const queueCount = {total: 0}
 
   avs.map((av) => (
