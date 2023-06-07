@@ -1,24 +1,53 @@
+// npm
+import { useState } from 'react';
+
+// service
+import * as avService from '../../services/avService'
+
 // css
 import styles from './DashboardComponent.module.css'
 
+// types
+import { Av, Maintenance } from '../../types/models'
+import { UpdateMaintenanceFormData } from "../../types/forms";
+
 interface MaintenanceTableEditableRowProps {
-  handleChange: (evt: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >) => void
-    handleSubmit: () => void
+  maintenance: Maintenance
+  av: Av
+  avId: number | null
+  editMaintenanceId: number | null
 }
 
 const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) => {
-  const { handleChange, handleSubmit } = props
+  const { maintenance, av, avId, editMaintenanceId } = props
+
+  const [formData, setFormData] = useState<UpdateMaintenanceFormData>(
+    maintenance
+  );
+
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    evt.preventDefault()
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
+
+  const handleSubmit = async () => {
+    // evt.preventDefault()
+    console.log(formData);
+    if (avId && editMaintenanceId) {
+      await avService.updateMaintenance(formData, avId, editMaintenanceId);
+    }
+  };
 
   return (
     <>
       <tr>
-        <td></td>
+        <td>{av.vehicleNo}</td>
         <td>
           <input 
             type="text" 
             name="type"
+            value={formData.type}
             autoComplete="off"
             required
             className={styles.input}
@@ -29,6 +58,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
           <input 
             type="number" 
             name="partsCost"
+            value={formData.partsCost}
             autoComplete="off"
             required
             className={styles.input}
@@ -39,6 +69,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
           <input 
             type="number" 
             name="laborCost"
+            value={formData.laborCost}
             autoComplete="off"
             required
             className={styles.input}
@@ -48,6 +79,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
         <td>
           <select 
             name="maintenanceStatus"
+            value={formData.maintenanceStatus}
             required
             className={styles.select}
             onChange={handleChange}
@@ -62,6 +94,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
           <input 
             type="date"
             name="date"
+            value={formData.date}
             required
             className={styles.input}
             onChange={handleChange}
@@ -70,6 +103,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
         <td>
           <textarea 
             name="notes"
+            value={formData.notes}
             autoComplete="off"
             required
             className={styles.textarea}

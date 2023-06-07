@@ -6,12 +6,15 @@ import { useState } from 'react'
 import MaintenanceTableReadOnlyRow from './MaintenanceTableReadOnlyRow'
 import MaintenanceTableEditableRow from './MaintenanceTableEditableRow'
 
+// service
+import * as avService from '../../services/avService'
+
 // css
 import styles from './DashboardComponent.module.css'
 
 // types
 import { Av } from '../../types/models'
-import { UpdateMaintenanceFormData } from "../../types/forms";
+// import { UpdateMaintenanceFormData } from "../../types/forms";
 
 interface MaintenanceTableProps {
   avs: Av[]
@@ -20,36 +23,18 @@ interface MaintenanceTableProps {
 const MaintenanceTable = (props: MaintenanceTableProps) => {
   const { avs } = props
 
-  const [formData, setFormData] = useState<UpdateMaintenanceFormData>({
-    type: "",
-    partsCost: 0,
-    laborCost: 0,
-    maintenanceStatus: "",
-    date: "",
-    notes: "",
-  });
+
 
   const [editMaintenanceId, setEditMaintenanceId] = useState<number | null>(null)
 
+  const [avId, setAvId] = useState<number | null>(null)
+
   const handleEditClick = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     evt.preventDefault()
+    console.log(evt)
     setEditMaintenanceId(parseInt(evt.currentTarget.id))
+    setAvId(parseInt(evt.currentTarget.className))
   }
-
-  const handleChange = (
-    evt: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    evt.preventDefault()
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
-  };
-
-  const handleSubmit = async () => {
-    // evt.preventDefault()
-    console.log(formData);
-    await avService.update(formData, avId);
-  };
 
   return (
     <>
@@ -75,27 +60,11 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
                 {av.maintenances.map((maintenance) => (
                   <>
                     { editMaintenanceId === maintenance.id ?
-                      <MaintenanceTableEditableRow key={maintenance.id} handleChange={handleChange} handleSubmit={handleSubmit}/>
+                      <MaintenanceTableEditableRow key={maintenance.id} av={av} maintenance={maintenance} avId={avId} editMaintenanceId={editMaintenanceId}/>
                     :
                       <MaintenanceTableReadOnlyRow key={maintenance.id} maintenance={maintenance} av={av} handleEditClick={handleEditClick}/>
                     }
                   </>
-                  // <tr key={maintenance.id}>
-                  //   <td><p>{av.vehicleNo}</p></td>
-                  //   <td><p>{maintenance.type}</p></td>
-                  //   <td><p>${maintenance.partsCost}</p></td>
-                  //   <td><p>${maintenance.laborCost}</p></td>
-                  //   <td>
-                  //     <div className={styles.status}>
-                  //       <StatusIcon maintenance={maintenance}/>
-                  //       <p>{maintenance.maintenanceStatus}</p>
-                  //     </div>
-                  //   </td>
-                  //   <td><p>{moment.utc(maintenance.createdAt).format('D MMM YYYY')}</p></td>
-                  //   <td><p>{moment.utc(maintenance.date).format('D MMM YYYY')}</p></td>
-                  //   <td><p>${maintenance.notes}</p></td>
-                  //   <td><button>Edit</button></td>
-                  // </tr>
                 ))}
               </tbody>
             ))}

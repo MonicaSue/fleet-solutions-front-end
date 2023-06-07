@@ -95,6 +95,10 @@ p {
   border: none;
 }
 
+.input, .select, .textarea {
+  width: 155px;
+  margin: 14px 0;
+}
 
 @media screen and (min-width: 500px) {
   .tableContainer {

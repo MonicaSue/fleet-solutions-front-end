@@ -21,6 +21,7 @@ interface MaintenanceTableReadOnlyRowProps {
 const MaintenanceTableReadOnlyRow = (props: MaintenanceTableReadOnlyRowProps) => {
   const { maintenance, av, handleEditClick } = props
   
+
   
   return (
     <>
@@ -38,7 +39,7 @@ const MaintenanceTableReadOnlyRow = (props: MaintenanceTableReadOnlyRowProps) =>
         <td><p>{moment.utc(maintenance.createdAt).format('D MMM YYYY')}</p></td>
         <td><p>{moment.utc(maintenance.date).format('D MMM YYYY')}</p></td>
         <td><p>{maintenance.notes}</p></td>
-        <td><button id={maintenance.id.toString()} type='button' onClick={(evt)=> handleEditClick(evt)}>Edit</button></td>
+        <td><button id={maintenance.id.toString()} className={av.id.toString()} type='button' onClick={(evt)=> handleEditClick(evt)}>Edit</button></td>
       </tr>
     </>
   )
