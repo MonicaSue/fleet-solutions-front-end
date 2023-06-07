@@ -10,16 +10,19 @@ export interface UpdateAvFormData {
   status: string;
 }
 
-// export interface PerformanceFormData {
-
-// }
+export interface PerformanceFormData {
+  takeover: number;
+  distance: number;
+  date: string;
+  notes: string;
+}
 
 export interface MaintenanceFormData {
   type: string;
   maintenanceStatus: string;
   partsCost: number;
   laborCost: number;
-  date: Date;
+  date: string;
   notes: string;
 }
 

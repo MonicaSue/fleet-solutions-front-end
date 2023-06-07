@@ -6,32 +6,29 @@ import moment from "moment"
 import * as avService from '../../services/avService'
 
 // types
-import { MaintenanceFormData } from '../../types/forms'
+import { PerformanceFormData } from '../../types/forms'
 
 // mui
 import { Button, Switch, FormGroup, FormControlLabel } from "@mui/material"
 
 // css
-import styles from './NewMaintenance.module.css'
+import styles from './NewPerformance.module.css'
 
-interface NewMaintenanceProps {
-avId: number,
+interface NewPerformanceProps {
+  avId: number,
 }
 
-const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
+const NewPerformance = (props: NewPerformanceProps): JSX.Element => {
   const { avId } = props
-  
   const [showForm, setShowForm] = useState(false)
   
   const defaultDate = moment.utc(new Date).format('yyyy-MM-DD')
   console.log(defaultDate)
 
 
-  const [formData, setFormData] = useState<MaintenanceFormData>({
-    type: '',
-    maintenanceStatus: 'In Queue',
-    partsCost: 0,
-    laborCost: 0,
+  const [formData, setFormData] = useState<PerformanceFormData>({
+    takeover: 0,
+    distance: 0,
     date: defaultDate,
     notes: '',
   })
@@ -46,12 +43,10 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
 
   const handleSubmit = async (evt: React.FormEvent) => {
     evt.preventDefault()
-    await avService.createMaintenance(formData, avId)
+    await avService.createPerformance(formData, avId)
     setFormData({
-      type: '',
-      maintenanceStatus: 'In Queue',
-      partsCost: 0,
-      laborCost: 0,
+      takeover: 0,
+      distance: 0,
       date: defaultDate,
       notes: '',
     })
@@ -63,7 +58,7 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
         <FormGroup className={styles.toggleFormContainer}>
           <FormControlLabel
             control={<Switch onChange={toggle} className={styles.toggle} />}
-            label={`${showForm ? '' : 'Add Ticket'}`}
+            label={`${showForm ? 'Add Report' : 'Add Report'}`}
             labelPlacement='top'
             className={styles.toggleContainer}
           />
@@ -71,10 +66,11 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
         {showForm ? 
           <form className={`${styles.form} ${!showForm && styles.hidden}`} onSubmit={handleSubmit}>
             <fieldset>
-              <legend>Maintenance Type</legend>
+              <legend>Takeover</legend>
               <input 
-                type="text" 
-                name="type"
+                type="number" 
+                name="takeover"
+                placeholder="# of takeovers"
                 autoComplete="off"
                 required
                 onChange={handleChange}
@@ -82,20 +78,29 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
               />
             </fieldset>
             <fieldset>
-              <legend>Status</legend>
-              <select 
-                name="maintenanceStatus"
+              <legend>Distance</legend>
+              <input 
+                type="number" 
+                name="distance"
+                placeholder="# of miles"
+                autoComplete="off"
                 required
                 onChange={handleChange}
-                className={styles.select}
-              >
-                <option value={"Completed"}>Completed</option>
-                <option value={"In Progress"}>In Progress</option>
-                <option value={"In Queue"} selected>In Queue</option>
-              </select>
+                className={styles.input}
+              />
             </fieldset>
             <fieldset>
-              <legend>Notes</legend>
+              <legend>Date</legend>
+              <input
+                type="date"
+                name="date"
+                required
+                onChange={handleChange}
+                className={styles.input}
+              />
+            </fieldset>
+            <fieldset>
+              <legend>Comments</legend>
               <textarea 
                 name="notes"
                 cols={34} 
@@ -116,4 +121,4 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
   )
 }
 
-export default NewMaintenance
+export default NewPerformance

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 // component
 import NewMaintenance from "../NewMaintenance/NewMaintenance";
+import NewPerformance from "../NewPerformance/NewPerformance";
 
 // service
 import * as avService from "../../services/avService";
@@ -23,7 +24,7 @@ interface ReportProps {
   handleDeleteAv: (avId: number) => Promise<void>;
 }
 
-const Report = (props: ReportProps) => {
+const Report = (props: ReportProps): JSX.Element => {
   const { selectedAvId, user, handleDeleteAv } = props;
 
   const avId = parseInt(selectedAvId);
@@ -97,32 +98,31 @@ const Report = (props: ReportProps) => {
               <Button onClick={handleSubmit} type="submit" variant="contained">
                 Save
               </Button>
-              <Button onClick={() => handleDeleteAv(avId)} variant="contained">
+              <Button onClick={() => handleDeleteAv(avId)} variant="outlined">
                 Delete
               </Button>
             </div>
           </form>
+          <h1>AV Log</h1>
         </div>
       ) : (
         <h1>Select an AV</h1>
       )}
       {(avId && user.role === "Driver") || (avId && user.role === "Admin") ? (
         <div>
-          <h1>AV Log</h1>
           <h2>Performance</h2>
-          <button>Add Report</button>
+          <NewPerformance avId={avId}/>
         </div>
       ) : (
-        ""
+        <></>
       )}
-      {(avId && user.role === "Mechanic") || (avId && user.role === "Admin") ? (
+      {avId ? (
         <div>
-          <h1>AV Log</h1>
           <h2>Maintenance</h2>
-          <NewMaintenance />
+          <NewMaintenance avId={avId}/>
         </div>
       ) : (
-        ""
+        <></>
       )}
     </>
   );
