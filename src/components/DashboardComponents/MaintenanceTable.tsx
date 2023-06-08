@@ -33,71 +33,69 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
   }
 
   return (
-    <>
-      <div className={styles.tableContainer}>
-        <h2>Maintenance Report</h2>
-        {user.role === "Mechanic" || user.role === "Admin" ?
-          <form>
-            <table>
-              <thead>
-                <tr>
-                  <th>VEHICLE ID</th>
-                  <th>TYPE</th>
-                  <th>PARTS COST</th>
-                  <th>LABOR COST</th>
-                  <th>STATUS</th>
-                  <th>CREATION DATE</th>
-                  <th>COMPLETED DATE</th>
-                  <th>NOTES</th>
-                  <th>EDIT</th>
-                </tr>
-              </thead>
-              {avs.map((av) => (
-                <tbody key={av.id}>
-                  {av.maintenances.map((maintenance) => (
-                    <>
-                      { editMaintenanceId === maintenance.id ?
-                        <MaintenanceTableEditableRow key={maintenance.id} av={av} maintenance={maintenance} avId={avId} editMaintenanceId={editMaintenanceId}/>
-                      :
-                        <MaintenanceTableReadOnlyRow key={maintenance.id} maintenance={maintenance} av={av} handleEditClick={handleEditClick}/>
-                      }
-                    </>
-                  ))}
-                </tbody>
-              ))}
-            </table>
-          </form>
-        :
+    <div className={styles.tableContainer}>
+      <h2>Maintenance Report</h2>
+      {user.role === "Mechanic" || user.role === "Admin" ?
+        <form>
           <table>
             <thead>
               <tr>
                 <th>VEHICLE ID</th>
                 <th>TYPE</th>
-                <th>TOTAL COST</th>
+                <th>PARTS COST</th>
+                <th>LABOR COST</th>
                 <th>STATUS</th>
+                <th>CREATION DATE</th>
+                <th>COMPLETED DATE</th>
+                <th>NOTES</th>
+                <th>EDIT</th>
               </tr>
             </thead>
             {avs.map((av) => (
               <tbody key={av.id}>
                 {av.maintenances.map((maintenance) => (
-                  <tr key={maintenance.id}>
-                    <td><p>{av.vehicleNo}</p></td>
-                    <td><p>{maintenance.type}</p></td>
-                    <td><p>${maintenance.partsCost + maintenance.laborCost}</p></td>
-                    <td>
-                      <div className={styles.status}>
-                        <StatusIcon maintenance={maintenance}/>
-                        <p>{maintenance.maintenanceStatus}</p>
-                      </div>
-                    </td>
-                  </tr>
+                  <>
+                    { editMaintenanceId === maintenance.id ?
+                      <MaintenanceTableEditableRow key={maintenance.id} av={av} maintenance={maintenance} avId={avId} editMaintenanceId={editMaintenanceId}/>
+                    :
+                      <MaintenanceTableReadOnlyRow key={maintenance.id} maintenance={maintenance} av={av} handleEditClick={handleEditClick}/>
+                    }
+                  </>
                 ))}
               </tbody>
-              ))}
+            ))}
           </table>
-        }
-      </div>
-    </>
+        </form>
+      :
+        <table>
+          <thead>
+            <tr>
+              <th>VEHICLE ID</th>
+              <th>TYPE</th>
+              <th>TOTAL COST</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          {avs.map((av) => (
+            <tbody key={av.id}>
+              {av.maintenances.map((maintenance) => (
+                <tr key={maintenance.id}>
+                  <td><p>{av.vehicleNo}</p></td>
+                  <td><p>{maintenance.type}</p></td>
+                  <td><p>${maintenance.partsCost + maintenance.laborCost}</p></td>
+                  <td>
+                    <div className={styles.status}>
+                      <StatusIcon maintenance={maintenance}/>
+                      <p>{maintenance.maintenanceStatus}</p>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            ))}
+        </table>
+      }
+    </div>
   )
 }
 

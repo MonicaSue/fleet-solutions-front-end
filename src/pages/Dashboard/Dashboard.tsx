@@ -65,10 +65,7 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         }
       </div>
       <div className={styles.mid}>
-        <div className={styles.tableContainer}>
         <MaintenanceTable user={user} avs={avs}/>
-        <MaintenanceChart avs={avs}/>
-        </div>
       </div>
       <div className={styles.bottom}>
         <MaintenanceChart avs={avs}/>

@@ -51,6 +51,13 @@
   color: black
 }
 
+.chartContainer {
+  position: relative;
+  padding: 15px 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
 thead {
   display: table-header-group;
   vertical-align: top;
