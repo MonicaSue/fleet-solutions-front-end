@@ -38,6 +38,8 @@ const Profiles = (props: ProfilesProps): JSX.Element => {
     return <main className={styles.container}><h1>Loading...</h1></main>
   }
 
+  if(!user || user.role !== 'Admin' ) { return <main><h1>Access Denied!</h1></main>}
+
   return (
     <main className={styles.container}>
       <div className={styles.profileContainer}>
@@ -45,7 +47,6 @@ const Profiles = (props: ProfilesProps): JSX.Element => {
           <ProfileCard 
             key={profile.id}
             profile={profile}
-            user={user}
           />
         ))}
       </div>

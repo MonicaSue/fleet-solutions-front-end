@@ -9,11 +9,10 @@ import styles from "./ProfileCard.module.css";
 
 interface ProfileCardProps {
   profile: Profile;
-  user: User | null;
 }
 
 const ProfileCard = (props: ProfileCardProps): JSX.Element => {
-  const { profile, user } = props;
+  const { profile } = props;
 
   const profilePic = profile.photo ? profile.photo : defaultPic;
 
