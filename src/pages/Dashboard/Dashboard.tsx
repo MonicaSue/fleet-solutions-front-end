@@ -65,11 +65,11 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         }
       </div>
       <div className={styles.mid}>
-        <MaintenanceTable user={user} avs={avs}/>
-      </div>
-      <div className={styles.bottom}>
         <MaintenanceChart avs={avs}/>
         <PerformanceChart avs={avs}/>
+      </div>
+      <div className={styles.bottom}>
+        <MaintenanceTable user={user} avs={avs}/>
       </div>
     </main>
   )
