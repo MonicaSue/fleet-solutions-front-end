@@ -1,15 +1,15 @@
 // npm
 import { useState, useEffect } from 'react';
-import moment from 'moment';
 
 // services
 import * as dashboardService from '../../services/dashboardService'
 
 // components
-import StatusIcon from '../../components/StatusIcon/StatusIcon';
 import PerformanceKpi from '../../components/DashboardComponents/PerformanceKpi';
 import MaintenanceKpi from '../../components/DashboardComponents/MaintenanceKpi';
 import MaintenanceTable from '../../components/DashboardComponents/MaintenanceTable';
+import MaintenanceChart from '../../components/DashboardComponents/MaintenanceChart';
+import PerformanceChart from '../../components/DashboardComponents/PerformanceChart';
 
 // css
 import styles from './Dashboard.module.css'
@@ -67,7 +67,12 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
       <div className={styles.mid}>
         <div className={styles.tableContainer}>
         <MaintenanceTable user={user} avs={avs}/>
+        <MaintenanceChart avs={avs}/>
         </div>
+      </div>
+      <div className={styles.bottom}>
+        <MaintenanceChart avs={avs}/>
+        <PerformanceChart avs={avs}/>
       </div>
     </main>
   )
