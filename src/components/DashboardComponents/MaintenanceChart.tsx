@@ -22,7 +22,7 @@ interface MaintenanceChartProps {
 const MaintenanceChart = (props: MaintenanceChartProps): JSX.Element => {
   const { avs } = props
 
-  const maintenanceData = []
+  const maintenanceData: Maintenance[] = []
   avs.map((av) => (
     av.maintenances.map((maintenance) => (
       maintenanceData.push(maintenance)

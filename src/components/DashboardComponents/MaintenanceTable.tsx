@@ -3,7 +3,6 @@ import { useState } from "react";
 
 // components
 import MaintenanceTableReadOnlyRow from "./MaintenanceTableReadOnlyRow";
-import MaintenanceTableEditableRow from "./MaintenanceTableEditableRow";
 import StatusIcon from "../StatusIcon/StatusIcon";
 
 // css
