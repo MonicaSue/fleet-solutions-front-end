@@ -2,7 +2,7 @@
 import defaultPic from "../../assets/icons/profile.png";
 
 // types
-import { Profile, User } from "../../types/models";
+import { Profile } from "../../types/models";
 
 // css
 import styles from "./ProfileCard.module.css";
