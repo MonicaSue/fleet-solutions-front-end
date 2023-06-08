@@ -11,9 +11,15 @@ import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import styles from './Profiles.module.css'
 
 // types
-import { Profile } from '../../types/models'
+import { Profile, User } from '../../types/models'
 
-const Profiles = (): JSX.Element => {
+interface ProfilesProps {
+  user: User | null;
+}
+
+const Profiles = (props: ProfilesProps): JSX.Element => {
+  const { user } = props
+  
   const [profiles, setProfiles] = useState<Profile[]>([])
 
   useEffect((): void => {
@@ -34,12 +40,15 @@ const Profiles = (): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      {profiles.map((profile: Profile) => (
-        <ProfileCard 
-          key={profile.id}
-          profile={profile}
-        />
-      ))}
+      <div className={styles.profileContainer}>
+        {profiles.map((profile: Profile) => (
+          <ProfileCard 
+            key={profile.id}
+            profile={profile}
+            user={user}
+          />
+        ))}
+      </div>
     </main>
   )
 }

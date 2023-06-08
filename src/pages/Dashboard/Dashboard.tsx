@@ -60,42 +60,14 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         {user.role === 'Mechanic' ? <></> :
           <PerformanceKpi avs={avs}/>
         }
-        <MaintenanceKpi avs={avs}/>
+        {user.role === 'Driver' ? <></> :
+          <MaintenanceKpi avs={avs}/>
+        }
       </div>
       <div className={styles.mid}>
         <div className={styles.tableContainer}>
-          <h2>Maintenance Report</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>VEHICLE ID</th>
-                <th>TYPE</th>
-                <th>TOTAL COST</th>
-                <th>STATUS</th>
-                <th>CREATION DATE</th>
-              </tr>
-            </thead>
-            {avs.map((av) => (
-              <tbody key={av.id}>
-                {av.maintenances.map((maintenance) => (
-                  <tr key={maintenance.id}>
-                    <td><p>{av.vehicleNo}</p></td>
-                    <td><p>{maintenance.type}</p></td>
-                    <td><p>${maintenance.partsCost + maintenance.laborCost}</p></td>
-                    <td>
-                      <div className={styles.status}>
-                        <StatusIcon maintenance={maintenance}/>
-                        <p>{maintenance.maintenanceStatus}</p>
-                      </div>
-                    </td>
-                    <td><p>{moment.utc(maintenance.createdAt).format('D MMM YYYY')}</p></td>
-                  </tr>
-                ))}
-              </tbody>
-              ))}
-          </table>
+        <MaintenanceTable user={user} avs={avs}/>
         </div>
-        <MaintenanceTable avs={avs}/>
       </div>
     </main>
   )

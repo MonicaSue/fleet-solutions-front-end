@@ -48,7 +48,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
                 {user.role === 'Admin' ?
                   <li><NavLink to="/profiles">Profiles</NavLink></li>
                 :
-                  ''
+                  <></>
                 }
               </div>
             </ul>
@@ -86,7 +86,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
             </div>
         </nav>
       ):(
-        ''
+        <></>
       )}
     </>
   )

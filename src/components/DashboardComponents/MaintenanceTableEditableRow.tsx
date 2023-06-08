@@ -7,15 +7,18 @@ import * as avService from '../../services/avService'
 // css
 import styles from './DashboardComponent.module.css'
 
+// assets
+import save from '../../assets/icons/save.png'
+
 // types
 import { Av, Maintenance } from '../../types/models'
 import { UpdateMaintenanceFormData } from "../../types/forms";
 
 interface MaintenanceTableEditableRowProps {
-  maintenance: Maintenance
-  av: Av
-  avId: number | null
-  editMaintenanceId: number | null
+  maintenance: Maintenance;
+  av: Av;
+  avId: number | null;
+  editMaintenanceId: number | null;
 }
 
 const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) => {
@@ -110,7 +113,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
             onChange={handleChange}
           />
         </td>
-        <td><button onClick={handleSubmit} type='submit'>Save</button></td>
+        <td><button onClick={handleSubmit} type='submit'><img src={save} alt="save icon" /></button></td>
       </tr>
     </>
   )

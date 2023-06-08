@@ -13,7 +13,7 @@ import partsIcon from '../../assets/icons/parts.png'
 import { Av } from '../../types/models'
 
 interface MaintenanceKpiProps {
-  avs: Av[]
+  avs: Av[];
 }
 
 const MaintenanceKpi = (props: MaintenanceKpiProps): JSX.Element => {

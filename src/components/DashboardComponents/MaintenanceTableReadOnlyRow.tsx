@@ -11,11 +11,14 @@ import styles from './DashboardComponent.module.css'
 import { Maintenance } from '../../types/models'
 import { Av } from '../../types/models'
 
+// assets
+import edit from '../../assets/icons/edit.png'
+
 
 interface MaintenanceTableReadOnlyRowProps {
-  maintenance: Maintenance
-  av: Av
-  handleEditClick: (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  maintenance: Maintenance;
+  av: Av;
+  handleEditClick: (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 const MaintenanceTableReadOnlyRow = (props: MaintenanceTableReadOnlyRowProps) => {
@@ -39,7 +42,7 @@ const MaintenanceTableReadOnlyRow = (props: MaintenanceTableReadOnlyRowProps) =>
         <td><p>{moment.utc(maintenance.createdAt).format('D MMM YYYY')}</p></td>
         <td><p>{moment.utc(maintenance.date).format('D MMM YYYY')}</p></td>
         <td><p>{maintenance.notes}</p></td>
-        <td><button id={maintenance.id.toString()} className={av.id.toString()} type='button' onClick={(evt)=> handleEditClick(evt)}>Edit</button></td>
+        <td><button id={maintenance.id.toString()} className={av.id.toString()} type='button' onClick={(evt)=> handleEditClick(evt)}><img src={edit}/></button></td>
       </tr>
     </>
   )

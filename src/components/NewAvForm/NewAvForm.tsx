@@ -19,7 +19,7 @@ const NewAvForm = (): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false)
   const [formData, setFormData] = useState<AvFormData>({
     vehicleNo: '',
-    status: '',
+    status: 'Active',
   })
 
   const handleClickOpen = (): void => {
@@ -34,14 +34,14 @@ const NewAvForm = (): JSX.Element => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-  const handleSubmit = async (evt: React.FormEvent) => {
-    evt.preventDefault()
+  const handleSubmit = async () => {
     setOpen(false)
     await avService.create(formData)
     setFormData({
       vehicleNo: '',
-      status: '',
+      status: 'Active',
     })
+    window.location.reload()
   }
 
   return (
@@ -75,7 +75,7 @@ const NewAvForm = (): JSX.Element => {
                 onChange={handleChange}
                 className={styles.select}
               >
-                <option value={"Active"}>Active</option>
+                <option value={"Active"} selected>Active</option>
                 <option value={"Inactive"}>Inactive</option>
                 <option value={"Under Maintenance"}>Under Maintenance</option>
                 <option value={"Retired"}>Retired</option>

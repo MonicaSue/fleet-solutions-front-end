@@ -8,18 +8,17 @@ import avIcon from '../../assets/icons/av.svg'
 import styles from './AvCard.module.css'
 
 interface AvCardProps {
-  av: Av
+  av: Av;
 }
 
 const AvCard = (props: AvCardProps): JSX.Element => {
   const { av } = props
 
-
   return (
     <div className={styles.container}>
         <img
           key={av.id}  
-          className={av.status === 'Under Maintenance' ? `${styles.underMaintenance}` : ''}
+          className={av.status.replaceAll(' ', '')}
           id={av.id.toString()}
           src={avIcon} 
           alt="Vehicle Icon" 

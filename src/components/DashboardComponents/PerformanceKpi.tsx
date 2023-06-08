@@ -14,7 +14,7 @@ import styles from './DashboardComponent.module.css'
 import { Av } from '../../types/models'
 
 interface PerformanceKpiProps {
-  avs: Av[]
+  avs: Av[];
 }
 
 const PerformanceKpi = (props: PerformanceKpiProps): JSX.Element => {

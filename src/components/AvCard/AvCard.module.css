@@ -17,6 +17,11 @@
   transition: opacity 0.3s;
 }
 
+.active {
+  filter: drop-shadow(0 0 1rem rgb(34, 238, 58));
+  cursor: pointer;
+}
+
 .inactive {
   filter: drop-shadow(0 0 1rem #e23);
   cursor: pointer;
