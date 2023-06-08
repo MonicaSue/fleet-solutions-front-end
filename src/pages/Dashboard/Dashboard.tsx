@@ -23,7 +23,7 @@ import { Av } from "../../types/models";
 import { User } from "../../types/models";
 
 interface DashboardProps {
-  user: User;
+  user: User | null;
 }
 
 const Dashboard = (props: DashboardProps): JSX.Element => {
@@ -56,8 +56,8 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         </Button>
       </div>
       <div className={styles.top}>
-        {user.role === "Mechanic" ? <></> : <PerformanceKpi avs={avs} />}
-        {user.role === "Driver" ? <></> : <MaintenanceKpi avs={avs} />}
+        {user && user.role === "Mechanic" ? <></> : <PerformanceKpi avs={avs} />}
+        {user && user.role === "Driver" ? <></> : <MaintenanceKpi avs={avs} />}
       </div>
       <div className={styles.mid}>
         <MaintenanceChart avs={avs} />

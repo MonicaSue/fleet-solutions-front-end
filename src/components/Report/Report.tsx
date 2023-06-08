@@ -20,7 +20,7 @@ import { Button } from "@mui/material";
 
 interface ReportProps {
   selectedAvId: string;
-  user: User;
+  user: User | null; 
   handleDeleteAv: (avId: number) => Promise<void>;
 }
 
@@ -108,7 +108,7 @@ const Report = (props: ReportProps): JSX.Element => {
       ) : (
         <h1>Select an AV</h1>
       )}
-      {(avId && user.role === "Driver") || (avId && user.role === "Admin") ? (
+      {(avId && user && user.role === "Driver") || (avId && user && user.role === "Admin") ? (
         <div>
           <h2>Performance</h2>
           <NewPerformance avId={avId} />

@@ -14,7 +14,7 @@ import { Av, User } from "../../types/models";
 
 interface MaintenanceTableProps {
   avs: Av[];
-  user: User;
+  user: User | null;
 }
 
 const MaintenanceTable = (props: MaintenanceTableProps) => {
@@ -38,7 +38,7 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
   return (
     <div className={styles.tableContainer}>
       <h2>Maintenance Report</h2>
-      {user.role === "Mechanic" || user.role === "Admin" ? (
+      {user && user.role === "Mechanic" || user && user.role === "Admin" ? (
         <form>
           <table>
             <thead>
@@ -56,11 +56,11 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
             </thead>
             {avs.map((av) => (
               <tbody key={av.id}>
-                {av.maintenances.map((maintenance) => (
+                {av.maintenances.map((maintenance, idx) => (
                   <>
                     {editMaintenanceId === maintenance.id ? (
                       <MaintenanceTableEditableRow
-                        key={maintenance.id}
+                        key={idx}
                         av={av}
                         maintenance={maintenance}
                         avId={avId}
