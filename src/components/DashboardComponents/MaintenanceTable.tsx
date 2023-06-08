@@ -38,7 +38,7 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
   return (
     <div className={styles.tableContainer}>
       <h2>Maintenance Report</h2>
-      {user && user.role === "Mechanic" || user && user.role === "Admin" ? (
+      {(user && user.role === "Mechanic") || (user && user.role === "Admin") ? (
         <form>
           <table>
             <thead>
@@ -56,25 +56,16 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
             </thead>
             {avs.map((av) => (
               <tbody key={av.id}>
-                {av.maintenances.map((maintenance, idx) => (
-                  <>
-                    {editMaintenanceId === maintenance.id ? (
-                      <MaintenanceTableEditableRow
-                        key={idx}
-                        av={av}
-                        maintenance={maintenance}
-                        avId={avId}
-                        editMaintenanceId={editMaintenanceId}
-                      />
-                    ) : (
-                      <MaintenanceTableReadOnlyRow
-                        key={maintenance.id}
-                        maintenance={maintenance}
-                        av={av}
-                        handleEditClick={handleEditClick}
-                      />
-                    )}
-                  </>
+                {av.maintenances.map((maintenance) => (
+                  <MaintenanceTableReadOnlyRow
+                    key={maintenance.id}
+                    maintenance={maintenance}
+                    av={av}
+                    avId={avId}
+                    editMaintenanceId={editMaintenanceId}
+                    handleEditClick={handleEditClick}
+                    editInProgress={editMaintenanceId === maintenance.id}
+                  />
                 ))}
               </tbody>
             ))}

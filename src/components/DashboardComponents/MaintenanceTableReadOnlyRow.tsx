@@ -3,6 +3,7 @@ import moment from "moment";
 
 // component
 import StatusIcon from "../StatusIcon/StatusIcon";
+import MaintenanceTableEditableRow from "./MaintenanceTableEditableRow";
 
 // css
 import styles from "./DashboardComponent.module.css";
@@ -20,12 +21,25 @@ interface MaintenanceTableReadOnlyRowProps {
   handleEditClick: (
     evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
+  editInProgress: boolean;
+  avId: number | null;
+  editMaintenanceId: number | null;
+  //editEnabled
 }
 
 const MaintenanceTableReadOnlyRow = (
   props: MaintenanceTableReadOnlyRowProps
 ) => {
-  const { maintenance, av, handleEditClick } = props;
+  const { editInProgress, maintenance, av, handleEditClick, avId, editMaintenanceId } = props;
+
+  if (editInProgress) return (
+    <MaintenanceTableEditableRow 
+      av={av}
+      maintenance={maintenance}
+      avId={avId}
+      editMaintenanceId={editMaintenanceId}
+    />
+  )
 
   return (
     <>
