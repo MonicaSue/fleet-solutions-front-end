@@ -3,7 +3,7 @@
 export interface Av {
   vehicleNo: string;
   status: string;
-  profileId: number,
+  profileId: number;
   id: number;
   createdAt: string;
   updatedAt: string;
@@ -21,6 +21,7 @@ export interface Performance {
   id: number;
   createdAt: string;
   updatedAt: string;
+  [key: string]: string | number;
 }
 
 export interface Maintenance {
@@ -35,6 +36,11 @@ export interface Maintenance {
   id: number;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Takeover {
+  takeover: number;
+  date: string;
 }
 
 /* ---------===== auth models =====--------- */

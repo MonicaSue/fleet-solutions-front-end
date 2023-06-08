@@ -1,23 +1,23 @@
 // components
-import AvCard from '../AvCard/AvCard'
+import AvCard from "../AvCard/AvCard";
 
 // styles
-import styles from './AvCardContainer.module.css'
+import styles from "./AvCardContainer.module.css";
 
 // types
-import { Av } from '../../types/models'
+import { Av } from "../../types/models";
 
 interface AvCardContainerProps {
-  avs: Av[]
-  setSelectedAvId: (value: string) => void
+  avs: Av[];
+  setSelectedAvId: (value: string) => void;
 }
 
 const AvCardContainer = (props: AvCardContainerProps): JSX.Element => {
-  const { avs, setSelectedAvId } = props
+  const { avs, setSelectedAvId } = props;
 
   const handleClick = (evt: React.MouseEvent<HTMLImageElement>): void => {
-    setSelectedAvId(evt.currentTarget.id)
-  }
+    setSelectedAvId(evt.currentTarget.id);
+  };
 
   return (
     <div className={styles.container}>
@@ -27,7 +27,7 @@ const AvCardContainer = (props: AvCardContainerProps): JSX.Element => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default AvCardContainer
+export default AvCardContainer;

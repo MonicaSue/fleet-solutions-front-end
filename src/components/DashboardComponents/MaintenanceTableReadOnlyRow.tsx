@@ -1,51 +1,75 @@
 // npm
-import moment from 'moment'
+import moment from "moment";
 
 // component
-import StatusIcon from '../StatusIcon/StatusIcon'
+import StatusIcon from "../StatusIcon/StatusIcon";
 
 // css
-import styles from './DashboardComponent.module.css'
+import styles from "./DashboardComponent.module.css";
 
 // types
-import { Maintenance } from '../../types/models'
-import { Av } from '../../types/models'
+import { Maintenance } from "../../types/models";
+import { Av } from "../../types/models";
 
 // assets
-import edit from '../../assets/icons/edit.png'
-
+import edit from "../../assets/icons/edit.png";
 
 interface MaintenanceTableReadOnlyRowProps {
   maintenance: Maintenance;
   av: Av;
-  handleEditClick: (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleEditClick: (
+    evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
 }
 
-const MaintenanceTableReadOnlyRow = (props: MaintenanceTableReadOnlyRowProps) => {
-  const { maintenance, av, handleEditClick } = props
-  
+const MaintenanceTableReadOnlyRow = (
+  props: MaintenanceTableReadOnlyRowProps
+) => {
+  const { maintenance, av, handleEditClick } = props;
 
-  
   return (
     <>
       <tr>
-        <td><p>{av.vehicleNo}</p></td>
-        <td><p>{maintenance.type}</p></td>
-        <td><p>${maintenance.partsCost}</p></td>
-        <td><p>${maintenance.laborCost}</p></td>
+        <td>
+          <p>{av.vehicleNo}</p>
+        </td>
+        <td>
+          <p>{maintenance.type}</p>
+        </td>
+        <td>
+          <p>${maintenance.partsCost}</p>
+        </td>
+        <td>
+          <p>${maintenance.laborCost}</p>
+        </td>
         <td>
           <div className={styles.status}>
-            <StatusIcon maintenance={maintenance}/>
+            <StatusIcon maintenance={maintenance} />
             <p>{maintenance.maintenanceStatus}</p>
           </div>
         </td>
-        <td><p>{moment.utc(maintenance.createdAt).format('D MMM YYYY')}</p></td>
-        <td><p>{moment.utc(maintenance.date).format('D MMM YYYY')}</p></td>
-        <td><p>{maintenance.notes}</p></td>
-        <td><button id={maintenance.id.toString()} className={av.id.toString()} type='button' onClick={(evt)=> handleEditClick(evt)}><img src={edit}/></button></td>
+        <td>
+          <p>{moment.utc(maintenance.createdAt).format("D MMM YYYY")}</p>
+        </td>
+        <td>
+          <p>{moment.utc(maintenance.date).format("D MMM YYYY")}</p>
+        </td>
+        <td>
+          <p>{maintenance.notes}</p>
+        </td>
+        <td>
+          <button
+            id={maintenance.id.toString()}
+            className={av.id.toString()}
+            type="button"
+            onClick={(evt) => handleEditClick(evt)}
+          >
+            <img src={edit} />
+          </button>
+        </td>
       </tr>
     </>
-  )
-}
+  );
+};
 
-export default MaintenanceTableReadOnlyRow
+export default MaintenanceTableReadOnlyRow;

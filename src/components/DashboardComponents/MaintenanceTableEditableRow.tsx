@@ -1,17 +1,17 @@
 // npm
-import { useState } from 'react';
+import { useState } from "react";
 
 // service
-import * as avService from '../../services/avService'
+import * as avService from "../../services/avService";
 
 // css
-import styles from './DashboardComponent.module.css'
+import styles from "./DashboardComponent.module.css";
 
 // assets
-import save from '../../assets/icons/save.png'
+import save from "../../assets/icons/save.png";
 
 // types
-import { Av, Maintenance } from '../../types/models'
+import { Av, Maintenance } from "../../types/models";
 import { UpdateMaintenanceFormData } from "../../types/forms";
 
 interface MaintenanceTableEditableRowProps {
@@ -21,16 +21,20 @@ interface MaintenanceTableEditableRowProps {
   editMaintenanceId: number | null;
 }
 
-const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) => {
-  const { maintenance, av, avId, editMaintenanceId } = props
+const MaintenanceTableEditableRow = (
+  props: MaintenanceTableEditableRowProps
+) => {
+  const { maintenance, av, avId, editMaintenanceId } = props;
 
-  const [formData, setFormData] = useState<UpdateMaintenanceFormData>(
-    maintenance
-  );
+  const [formData, setFormData] =
+    useState<UpdateMaintenanceFormData>(maintenance);
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  const handleChange = (
+    evt: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
-    evt.preventDefault()
+    evt.preventDefault();
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
@@ -47,8 +51,8 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
       <tr>
         <td>{av.vehicleNo}</td>
         <td>
-          <input 
-            type="text" 
+          <input
+            type="text"
             name="type"
             value={formData.type}
             autoComplete="off"
@@ -58,8 +62,8 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
           />
         </td>
         <td>
-          <input 
-            type="number" 
+          <input
+            type="number"
             name="partsCost"
             value={formData.partsCost}
             autoComplete="off"
@@ -69,8 +73,8 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
           />
         </td>
         <td>
-          <input 
-            type="number" 
+          <input
+            type="number"
             name="laborCost"
             value={formData.laborCost}
             autoComplete="off"
@@ -80,7 +84,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
           />
         </td>
         <td>
-          <select 
+          <select
             name="maintenanceStatus"
             value={formData.maintenanceStatus}
             required
@@ -94,7 +98,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
         </td>
         <td></td>
         <td>
-          <input 
+          <input
             type="date"
             name="date"
             value={formData.date}
@@ -104,7 +108,7 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
           />
         </td>
         <td>
-          <textarea 
+          <textarea
             name="notes"
             value={formData.notes}
             autoComplete="off"
@@ -113,10 +117,14 @@ const MaintenanceTableEditableRow = (props: MaintenanceTableEditableRowProps) =>
             onChange={handleChange}
           />
         </td>
-        <td><button onClick={handleSubmit} type='submit'><img src={save} alt="save icon" /></button></td>
+        <td>
+          <button onClick={handleSubmit} type="submit">
+            <img src={save} alt="save icon" />
+          </button>
+        </td>
       </tr>
     </>
-  )
-}
+  );
+};
 
-export default MaintenanceTableEditableRow
+export default MaintenanceTableEditableRow;

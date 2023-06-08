@@ -1,27 +1,24 @@
 // types
-import { Av } from '../../types/models'
+import { Av } from "../../types/models";
 
 interface MilesDrivenProps {
-  avs: Av[]
+  avs: Av[];
 }
 
 const MilesDriven = (props: MilesDrivenProps) => {
-  const { avs } = props 
-  
-  const milesDriven = {total: 0}
+  const { avs } = props;
 
-  avs.map((av) => (
-    av.performances.map((performance) => (
-      performance.distance ? milesDriven.total += performance.distance : milesDriven.total += 0
-    ))
-  ))
-  
+  const milesDriven = { total: 0 };
 
-  return (
-    <>
-      {milesDriven.total}
-    </>
-  )
-}
+  avs.map((av) =>
+    av.performances.map((performance) =>
+      performance.distance
+        ? (milesDriven.total += performance.distance)
+        : (milesDriven.total += 0)
+    )
+  );
 
-export default MilesDriven
+  return <>{milesDriven.total}</>;
+};
+
+export default MilesDriven;

@@ -9,10 +9,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// types
-import { Av, Performance } from "../../types/models";
+import moment from "moment";
 
-import styles from './DashboardComponent.module.css'
+// types
+import { Av, Performance, Takeover } from "../../types/models";
+
+import styles from "./DashboardComponent.module.css";
 
 interface PerformanceChartProps {
   avs: Av[];
@@ -20,25 +22,28 @@ interface PerformanceChartProps {
 
 const PerformanceChart = (props: PerformanceChartProps): JSX.Element => {
   const { avs } = props;
-
-  let performanceArr = []
-  avs.map((av) =>
-    av.performances.map((performance) => 
+  
+  const performanceArr: Performance[]= [];
+  avs.forEach((av) => {
+    av.performances.forEach((performance) => {
+      performance.date = moment.utc(performance.date).format("yyyy-MM")
       performanceArr.push(performance)
-      )
-  );
-  console.log(performanceArr);
+    })
+  })
 
-  const takeoverData = [];
-  performanceArr.reduce(function (acc, value) {
-    if (!acc[value.date]) {
-      acc[value.date] = { date: value.date, takeover: 0 };
-      takeoverData.push(acc[value.date]);
+  const takeoverData: Takeover[] = performanceArr.reduce(function (acc: Takeover[], curr) {
+    const idx = acc.findIndex(obj => obj.date === curr.date)
+    if (idx >= 0) {
+      acc[idx].takeover += curr.takeover
+    } else {
+      acc.push({date: curr.date, takeover: curr.takeover})
     }
-    acc[value.date].takeover += value.takeover;
     return acc;
-  }, {});
-  console.log(takeoverData);
+  }, []);
+
+  takeoverData.sort(function(a, b) {
+    return new Date(a.date).valueOf() - new Date(b.date).valueOf()
+  })
 
 
   return (

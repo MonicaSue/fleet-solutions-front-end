@@ -1,33 +1,33 @@
 // types
-import { Av } from '../../types/models'
+import { Av } from "../../types/models";
 
 // assets
-import avIcon from '../../assets/icons/av.svg'
+import avIcon from "../../assets/icons/av.svg";
 
 // css
-import styles from './AvCard.module.css'
+import styles from "./AvCard.module.css";
 
 interface AvCardProps {
   av: Av;
 }
 
 const AvCard = (props: AvCardProps): JSX.Element => {
-  const { av } = props
+  const { av } = props;
 
   return (
     <div className={styles.container}>
-        <img
-          key={av.id}  
-          className={av.status.replaceAll(' ', '')}
-          id={av.id.toString()}
-          src={avIcon} 
-          alt="Vehicle Icon" 
-        />
-        <div className={styles.overlayText}>
-          <h4 className={styles.vin}>{av.vehicleNo}</h4>
-        </div>
+      <img
+        key={av.id}
+        className={av.status.replaceAll(" ", "")}
+        id={av.id.toString()}
+        src={avIcon}
+        alt="Vehicle Icon"
+      />
+      <div className={styles.overlayText}>
+        <h4 className={styles.vin}>{av.vehicleNo}</h4>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default AvCard
+export default AvCard;

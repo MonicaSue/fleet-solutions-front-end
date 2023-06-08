@@ -111,7 +111,7 @@ const Report = (props: ReportProps): JSX.Element => {
       {(avId && user.role === "Driver") || (avId && user.role === "Admin") ? (
         <div>
           <h2>Performance</h2>
-          <NewPerformance avId={avId}/>
+          <NewPerformance avId={avId} />
         </div>
       ) : (
         <></>
@@ -119,7 +119,7 @@ const Report = (props: ReportProps): JSX.Element => {
       {avId ? (
         <div>
           <h2>Maintenance</h2>
-          <NewMaintenance avId={avId}/>
+          <NewMaintenance avId={avId} />
         </div>
       ) : (
         <></>

@@ -1,50 +1,50 @@
 // npm
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // services
-import * as avService from '../../services/avService'
+import * as avService from "../../services/avService";
 
 // types
-import { Av } from '../../types/models'
-import { User } from '../../types/models'
+import { Av } from "../../types/models";
+import { User } from "../../types/models";
 
 // components
-import NewAvForm from '../../components/NewAvForm/NewAvForm';
-import AvCardContainer from '../../components/AvCardContainer/AvCardContainer';
-import Report from '../../components/Report/Report';
+import NewAvForm from "../../components/NewAvForm/NewAvForm";
+import AvCardContainer from "../../components/AvCardContainer/AvCardContainer";
+import Report from "../../components/Report/Report";
 
 // css
-import styles from './Avs.module.css'
+import styles from "./Avs.module.css";
 
 interface AvsProps {
   user: User;
 }
 
 const Avs = (props: AvsProps): JSX.Element => {
-  const { user } = props
-  
-  const [avs, setAvs] = useState<Av[]>([])
-  const [selectedAvId, setSelectedAvId] = useState<string>('')
-  const navigate = useNavigate()
+  const { user } = props;
+
+  const [avs, setAvs] = useState<Av[]>([]);
+  const [selectedAvId, setSelectedAvId] = useState<string>("");
+  const navigate = useNavigate();
 
   useEffect((): void => {
     const fetchAvs = async (): Promise<void> => {
       try {
-        const avData: Av[] = await avService.getAllAvs()
-        setAvs(avData)
+        const avData: Av[] = await avService.getAllAvs();
+        setAvs(avData);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    fetchAvs()
-  }, [])
+    };
+    fetchAvs();
+  }, []);
 
   const handleDeleteAv = async (avId: number) => {
-    const deletedAv = await avService.deleteAv(avId)
-    setAvs(avs.filter((av) => av.id !== deletedAv.id))
-    navigate('/avs')
-  }
+    const deletedAv = await avService.deleteAv(avId);
+    setAvs(avs.filter((av) => av.id !== deletedAv.id));
+    navigate("/avs");
+  };
 
   return (
     <main className={styles.container}>
@@ -56,7 +56,7 @@ const Avs = (props: AvsProps): JSX.Element => {
           <AvCardContainer avs={avs} setSelectedAvId={setSelectedAvId} />
         </div>
         <div className={styles.report}>
-          <Report 
+          <Report
             selectedAvId={selectedAvId}
             user={user}
             handleDeleteAv={handleDeleteAv}
@@ -64,7 +64,7 @@ const Avs = (props: AvsProps): JSX.Element => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Avs
+export default Avs;

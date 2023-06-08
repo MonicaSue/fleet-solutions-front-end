@@ -1,79 +1,85 @@
 // npm
-import { useState } from "react"
-import moment from "moment"
+import { useState } from "react";
+import moment from "moment";
 
 // services
-import * as avService from '../../services/avService'
+import * as avService from "../../services/avService";
 
 // types
-import { MaintenanceFormData } from '../../types/forms'
+import { MaintenanceFormData } from "../../types/forms";
 
 // mui
-import { Button, Switch, FormGroup, FormControlLabel } from "@mui/material"
+import { Button, Switch, FormGroup, FormControlLabel } from "@mui/material";
 
 // css
-import styles from './NewMaintenance.module.css'
+import styles from "./NewMaintenance.module.css";
 
 interface NewMaintenanceProps {
-avId: number,
+  avId: number;
 }
 
-const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
-  const { avId } = props
-  
-  const [showForm, setShowForm] = useState(false)
-  
-  const defaultDate = moment.utc(new Date).format('yyyy-MM-DD')
-  console.log(defaultDate)
+const NewMaintenance = (props: NewMaintenanceProps): JSX.Element => {
+  const { avId } = props;
 
+  const [showForm, setShowForm] = useState(false);
+
+  const defaultDate = moment.utc(new Date()).format("yyyy-MM-DD");
+  console.log(defaultDate);
 
   const [formData, setFormData] = useState<MaintenanceFormData>({
-    type: '',
-    maintenanceStatus: 'In Queue',
+    type: "",
+    maintenanceStatus: "In Queue",
     partsCost: 0,
     laborCost: 0,
     date: defaultDate,
-    notes: '',
-  })
+    notes: "",
+  });
 
   const toggle = async () => {
-    showForm ? setShowForm(false) : setShowForm(true)
-  }
+    showForm ? setShowForm(false) : setShowForm(true);
+  };
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value })
-  }
+  const handleChange = (
+    evt: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
 
   const handleSubmit = async (evt: React.FormEvent) => {
-    evt.preventDefault()
-    await avService.createMaintenance(formData, avId)
+    evt.preventDefault();
+    await avService.createMaintenance(formData, avId);
     setFormData({
-      type: '',
-      maintenanceStatus: 'In Queue',
+      type: "",
+      maintenanceStatus: "In Queue",
       partsCost: 0,
       laborCost: 0,
       date: defaultDate,
-      notes: '',
-    })
-  }
-  
+      notes: "",
+    });
+  };
+
   return (
     <>
       <div>
         <FormGroup className={styles.toggleFormContainer}>
           <FormControlLabel
             control={<Switch onChange={toggle} className={styles.toggle} />}
-            label={`${showForm ? '' : 'Add Ticket'}`}
-            labelPlacement='top'
+            label={`${showForm ? "" : "Add Ticket"}`}
+            labelPlacement="top"
             className={styles.toggleContainer}
           />
         </FormGroup>
-        {showForm ? 
-          <form className={`${styles.form} ${!showForm && styles.hidden}`} onSubmit={handleSubmit}>
+        {showForm ? (
+          <form
+            className={`${styles.form} ${!showForm && styles.hidden}`}
+            onSubmit={handleSubmit}
+          >
             <fieldset>
               <legend>Maintenance Type</legend>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="type"
                 autoComplete="off"
                 required
@@ -83,7 +89,7 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
             </fieldset>
             <fieldset>
               <legend>Status</legend>
-              <select 
+              <select
                 name="maintenanceStatus"
                 required
                 onChange={handleChange}
@@ -91,29 +97,30 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element  => {
               >
                 <option value={"Completed"}>Completed</option>
                 <option value={"In Progress"}>In Progress</option>
-                <option value={"In Queue"} selected>In Queue</option>
+                <option value={"In Queue"} selected>
+                  In Queue
+                </option>
               </select>
             </fieldset>
             <fieldset>
               <legend>Notes</legend>
-              <textarea 
+              <textarea
                 name="notes"
-                cols={34} 
+                cols={34}
                 rows={5}
                 autoComplete="off"
                 onChange={handleChange}
                 className={styles.textarea}
-              >
-              </textarea>
+              ></textarea>
             </fieldset>
             <Button onClick={handleSubmit}>Submit</Button>
           </form>
-        :
+        ) : (
           <></>
-        }
+        )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default NewMaintenance
+export default NewMaintenance;
