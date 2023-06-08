@@ -57,8 +57,6 @@ const Report = (props: ReportProps): JSX.Element => {
   };
 
   const handleSubmit = async () => {
-    // evt.preventDefault()
-    console.log(formData);
     await avService.update(formData, avId);
   };
 

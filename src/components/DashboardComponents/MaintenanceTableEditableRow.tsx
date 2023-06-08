@@ -39,8 +39,6 @@ const MaintenanceTableEditableRow = (
   };
 
   const handleSubmit = async () => {
-    // evt.preventDefault()
-    console.log(formData);
     if (avId && editMaintenanceId) {
       await avService.updateMaintenance(formData, avId, editMaintenanceId);
     }

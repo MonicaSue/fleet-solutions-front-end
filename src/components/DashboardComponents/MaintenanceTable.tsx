@@ -29,7 +29,6 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
     evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
     evt.preventDefault();
-    console.log(evt);
     setEditMaintenanceId(parseInt(evt.currentTarget.id));
     setAvId(parseInt(evt.currentTarget.className));
   };

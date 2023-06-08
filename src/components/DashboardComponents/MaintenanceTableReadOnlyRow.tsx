@@ -24,7 +24,6 @@ interface MaintenanceTableReadOnlyRowProps {
   editInProgress: boolean;
   avId: number | null;
   editMaintenanceId: number | null;
-  //editEnabled
 }
 
 const MaintenanceTableReadOnlyRow = (

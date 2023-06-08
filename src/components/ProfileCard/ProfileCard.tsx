@@ -25,14 +25,6 @@ const ProfileCard = (props: ProfileCardProps): JSX.Element => {
         className={styles.profile}
       />
       <h1>{profile.name}</h1>
-      {user ? (
-        <>
-          <p>{user.role}</p>
-          <p>{user.isActive}</p>
-        </>
-      ) : (
-        <></>
-      )}
     </article>
   );
 };

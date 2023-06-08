@@ -29,8 +29,6 @@ const MaintenanceChart = (props: MaintenanceChartProps): JSX.Element => {
     ))
   ))
 
-  console.log(maintenanceData)
-
   return (
     <div className={styles.maintenanceChartContainer}>
       <ResponsiveContainer width="100%" height={400}>

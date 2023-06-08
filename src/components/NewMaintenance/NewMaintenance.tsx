@@ -1,5 +1,6 @@
 // npm
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
 // services
@@ -21,6 +22,7 @@ interface NewMaintenanceProps {
 const NewMaintenance = (props: NewMaintenanceProps): JSX.Element => {
   const { avId } = props;
 
+  const navigate = useNavigate()
   const [showForm, setShowForm] = useState(false);
 
   const defaultDate = moment.utc(new Date()).format("yyyy-MM-DD");
@@ -58,6 +60,7 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element => {
       date: defaultDate,
       notes: "",
     });
+    navigate('/dashboard')
   };
 
   return (
