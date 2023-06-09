@@ -79,7 +79,8 @@ async function createMaintenance(formData: MaintenanceFormData, id: number): Pro
   return await res.json() as Maintenance
 }
 
-async function updateMaintenance(formData: UpdateMaintenanceFormData, id: number, maintenanceId: number): Promise<Maintenance> {
+async function updateMaintenance(formData: UpdateMaintenanceFormData, id: number, maintenanceId: number): Promise<Av> {
+  console.log(maintenanceId, id)
   const res = await fetch(`${BASE_URL}/${id}/maintenances/${maintenanceId}`, {
     method: 'PUT',
     headers: {
@@ -88,7 +89,7 @@ async function updateMaintenance(formData: UpdateMaintenanceFormData, id: number
     },
     body: JSON.stringify(formData)
   })
-  return await res.json() as Maintenance
+  return await res.json() as Av
 }
 
 export { getAllAvs, create, show, update, deleteAv, createMaintenance, createPerformance, updateMaintenance }

@@ -1,5 +1,7 @@
 /* ---------===== custom props ====--------- */
 
+export type SetAvs = React.Dispatch<React.SetStateAction<Av[]>>
+
 export interface Av {
   vehicleNo: string;
   status: string;

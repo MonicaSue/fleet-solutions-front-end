@@ -1,12 +1,12 @@
 # Fleet Solutions
 
-![picture alt](add src here)
+![picture alt](src/assets/images/avImage.png)
 
 ## Click **[Here](https://fleet-solutions.netlify.app/)** to use the app
 
-**Fleet Solutions** was inspired by my previous experience with an autonomous driving technology company. I wanted to create a fleetOps and finance solution that will help both departments to manage their workflows. The platform allows users to track parts and labor cost for maintenance, and total amount of takeovers from any given drive.
+**Fleet Solutions** was inspired by my previous experience with an autonomous driving technology company. I wanted to create a fleetOps and finance solution that will help both departments to manage their workflows. The platform allows users to track parts and labor costs for maintenance, and the total amount of takeovers from any given drive.
 
-**Fleet Solutions** will provide the data needed to make key budget and forecasting decisions, as well as understanding the progression of the SDS over time. 
+**Fleet Solutions** will provide the data needed to make key budget and forecasting decisions, as well as understand the progression of the SDS over time. 
 
 Planning materials and original wireframes can be found [here](https://trello.com/b/vkUT9dft/fleet-solutions).
 
@@ -34,8 +34,10 @@ Planning materials and original wireframes can be found [here](https://trello.co
 
 ## Ice Box
 - [ ] Allow users to search for an AV by it's vehicle Id # in the AVs and Dashboard pages
-- [ ] Allow users to filter dashboard by Month, Year, YTD
+- [ ] Allow users to filter the dashboard by Month, Year, YTD
 - [ ] Allow admins to deactivate accounts, preventing users to sign-in, in order to maintain data history
-- [ ] Implement safety incidenct model and dashboard
+- [ ] Implement safety incident model and dashboard
 - [ ] Implement a more robust analytical reporting 
 - [ ] Implement drag and drop functionality to the AVs page
+
+

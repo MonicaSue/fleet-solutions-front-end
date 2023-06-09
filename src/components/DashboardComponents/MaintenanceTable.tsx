@@ -14,6 +14,7 @@ import { Av, User } from "../../types/models";
 interface MaintenanceTableProps {
   avs: Av[];
   user: User | null;
+  setAvs: (arr: Av[]) => void
 }
 
 const MaintenanceTable = (props: MaintenanceTableProps) => {
@@ -58,11 +59,14 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
                   <MaintenanceTableReadOnlyRow
                     key={maintenance.id}
                     maintenance={maintenance}
+                    avs={avs}
                     av={av}
                     avId={avId}
                     editMaintenanceId={editMaintenanceId}
+                    setEditMaintenanceId={setEditMaintenanceId}
                     handleEditClick={handleEditClick}
                     editInProgress={editMaintenanceId === maintenance.id}
+                    setAvs={props.setAvs}
                   />
                 ))}
               </tbody>

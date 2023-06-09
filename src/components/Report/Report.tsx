@@ -65,7 +65,7 @@ const Report = (props: ReportProps): JSX.Element => {
       {avId ? (
         <div className={styles.container}>
           <h1>{formData.vehicleNo}</h1>
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <form className={styles.form}>
             <fieldset>
               <legend>Vehicle Id</legend>
               <input

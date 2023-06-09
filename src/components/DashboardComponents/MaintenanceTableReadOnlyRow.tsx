@@ -24,12 +24,15 @@ interface MaintenanceTableReadOnlyRowProps {
   editInProgress: boolean;
   avId: number | null;
   editMaintenanceId: number | null;
+  setEditMaintenanceId: (val: number | null) => void;
+  setAvs: (arr: Av[]) => void
+  avs: Av[]
 }
 
 const MaintenanceTableReadOnlyRow = (
   props: MaintenanceTableReadOnlyRowProps
 ) => {
-  const { editInProgress, maintenance, av, handleEditClick, avId, editMaintenanceId } = props;
+  const { editInProgress, maintenance, av, handleEditClick, avId, editMaintenanceId, setEditMaintenanceId } = props;
 
   if (editInProgress) return (
     <MaintenanceTableEditableRow 
@@ -37,6 +40,9 @@ const MaintenanceTableReadOnlyRow = (
       maintenance={maintenance}
       avId={avId}
       editMaintenanceId={editMaintenanceId}
+      setEditMaintenanceId={setEditMaintenanceId}
+      setAvs={props.setAvs}
+      avs={props.avs}
     />
   )
 

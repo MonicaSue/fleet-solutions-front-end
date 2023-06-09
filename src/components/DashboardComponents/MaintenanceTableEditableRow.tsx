@@ -19,12 +19,23 @@ interface MaintenanceTableEditableRowProps {
   av: Av;
   avId: number | null;
   editMaintenanceId: number | null;
+  setEditMaintenanceId: (val: number | null) => void;
+  setAvs: (arr: Av[]) => void;
+  avs: Av[]
 }
 
 const MaintenanceTableEditableRow = (
   props: MaintenanceTableEditableRowProps
 ) => {
-  const { maintenance, av, avId, editMaintenanceId } = props;
+  const {
+    maintenance,
+    av,
+    avId,
+    editMaintenanceId,
+    setEditMaintenanceId,
+    setAvs,
+    avs,
+  } = props;
 
   const [formData, setFormData] =
     useState<UpdateMaintenanceFormData>(maintenance);
@@ -38,10 +49,20 @@ const MaintenanceTableEditableRow = (
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (evt: React.FormEvent) => {
+    evt.preventDefault();
     if (avId && editMaintenanceId) {
-      await avService.updateMaintenance(formData, avId, editMaintenanceId);
+      const updatedAv = await avService.updateMaintenance(
+        formData,
+        avId,
+        editMaintenanceId
+      );
+      const newAvs = avs.map((prevAv) => {
+        return prevAv.id === avId ? updatedAv : prevAv;
+      });
+      setAvs(newAvs)
     }
+    setEditMaintenanceId(null);
   };
 
   return (

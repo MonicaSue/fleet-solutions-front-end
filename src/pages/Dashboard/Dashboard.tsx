@@ -47,6 +47,9 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
     window.location.reload();
   };
 
+  if (!avs.length) return <main>Loading...</main>
+  console.log('AVS:', avs)
+
   return (
     <main className={styles.container}>
       <div className={styles.header}>
@@ -64,7 +67,7 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         <PerformanceChart avs={avs} />
       </div>
       <div className={styles.bottom}>
-        <MaintenanceTable user={user} avs={avs} />
+        <MaintenanceTable user={user} avs={avs} setAvs={setAvs}/>
       </div>
     </main>
   );
