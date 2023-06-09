@@ -1,6 +1,6 @@
 // npm
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 // services
 import * as avService from "../../services/avService";
@@ -19,32 +19,35 @@ import styles from "./Avs.module.css";
 
 interface AvsProps {
   user: User | null;
+  avs: Av[] | null;
+  setAvs: (arr: Av[]) => void
 }
 
 const Avs = (props: AvsProps): JSX.Element => {
-  const { user } = props;
+  const { user, avs, setAvs } = props;
 
-  const [avs, setAvs] = useState<Av[]>([]);
+  // const [avs, setAvs] = useState<Av[]>([]);
   const [selectedAvId, setSelectedAvId] = useState<string>("");
-  const navigate = useNavigate();
 
-  useEffect((): void => {
-    const fetchAvs = async (): Promise<void> => {
-      try {
-        const avData: Av[] = await avService.getAllAvs();
-        setAvs(avData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchAvs();
-  }, []);
+  // useEffect((): void => {
+  //   const fetchAvs = async (): Promise<void> => {
+  //     try {
+  //       const avData: Av[] = await avService.getAllAvs();
+  //       setAvs(avData);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchAvs();
+  // }, []);
 
   const handleDeleteAv = async (avId: number) => {
     const deletedAv = await avService.deleteAv(avId);
-    setAvs(avs.filter((av) => av.id !== deletedAv.id));
-    navigate("/avs");
+    if (avs)
+      setAvs(avs.filter((av) => av.id !== deletedAv.id));
+    setSelectedAvId("")
   };
+  
 
   return (
     <main className={styles.container}>

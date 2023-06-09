@@ -1,5 +1,5 @@
 // npm modules 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -17,15 +17,19 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as avService from './services/avService'
 
 // styles
 import './App.css'
 
 // types
-import { User } from './types/models'
+import { User, Av } from './types/models'
+import { AvFormData } from './types/forms'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
+  const [avs, setAvs] = useState<Av[] | null>(null)
+  // const [av, setAv] = useState<Av | null>(null)
   const navigate = useNavigate()
   
   const handleLogout = (): void => {
@@ -38,6 +42,19 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
+  useEffect((): void => {
+    const fetchAvs = async (): Promise<void> => {
+      try {
+        const avData: Av[] = await avService.getAllAvs();
+        setAvs(avData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    user ? fetchAvs() : setAvs(null);
+  }, [user]);
+  
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -47,7 +64,7 @@ function App(): JSX.Element {
           path="/avs" 
           element={
             <ProtectedRoute user={user}>
-              <Avs user={user}/>
+              <Avs user={user} avs={avs} setAvs={setAvs}/>
             </ProtectedRoute>
           } 
         />

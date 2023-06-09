@@ -55,7 +55,7 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
             </thead>
             {avs.map((av) => (
               <tbody key={av.id}>
-                {av.maintenances.map((maintenance) => (
+                {av.maintenances?.map((maintenance) => (
                   <MaintenanceTableReadOnlyRow
                     key={maintenance.id}
                     maintenance={maintenance}

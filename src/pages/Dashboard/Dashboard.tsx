@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 // services
-import * as dashboardService from "../../services/dashboardService";
+import * as avService from "../../services/dashboardService";
 
 // components
 import PerformanceKpi from "../../components/DashboardComponents/PerformanceKpi";
@@ -34,7 +34,7 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
   useEffect((): void => {
     const fetchAvs = async (): Promise<void> => {
       try {
-        const avData: Av[] = await dashboardService.getAllAvs();
+        const avData: Av[] = await avService.getAllAvs();
         setAvs(avData);
       } catch (error) {
         console.log(error);
