@@ -22,7 +22,7 @@ const MaintenanceKpi = (props: MaintenanceKpiProps): JSX.Element => {
   const totalServiceCost = { parts: 0, labor: 0 };
 
   avs?.map((av) =>
-    av.maintenance?.map((maintenance) =>
+    av.maintenances?.map((maintenance) =>
       maintenance.partsCost
         ? (totalServiceCost.parts += maintenance.partsCost)
         : (totalServiceCost.parts += 0)
