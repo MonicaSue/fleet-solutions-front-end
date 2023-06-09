@@ -9,7 +9,6 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-import moment from "moment";
 
 // types
 import { Av, Maintenance, Service } from '../../types/models'
@@ -27,7 +26,6 @@ const MaintenanceChart = (props: MaintenanceChartProps): JSX.Element => {
   const maintenanceArr: Maintenance[] = []
   avs.forEach((av) => {
     av.maintenances.forEach((maintenance) => {
-      // maintenance.date = moment.utc(maintenance.date).format("yyyy-MM")
       maintenanceArr.push(maintenance)
     })
   })
