@@ -24,14 +24,14 @@ const PerformanceChart = (props: PerformanceChartProps): JSX.Element => {
   const { avs } = props;
   
   const performanceArr: Performance[]= [];
-  avs.forEach((av) => {
-    av.performances.forEach((performance) => {
+  avs?.forEach((av) => {
+    av.performances?.forEach((performance) => {
       performance.date = moment.utc(performance.date).format("yyyy-MM")
       performanceArr.push(performance)
     })
   })
 
-  const takeoverData: Takeover[] = performanceArr.reduce(function (acc: Takeover[], curr) {
+  const takeoverData: Takeover[] = performanceArr?.reduce(function (acc: Takeover[], curr) {
     const idx = acc.findIndex(obj => obj.date === curr.date)
     if (idx >= 0) {
       acc[idx].takeover += curr.takeover

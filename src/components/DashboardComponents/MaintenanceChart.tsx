@@ -24,8 +24,8 @@ const MaintenanceChart = (props: MaintenanceChartProps): JSX.Element => {
   const { avs } = props
 
   const maintenanceArr: Maintenance[] = []
-  avs.forEach((av) => {
-    av.maintenances.forEach((maintenance) => {
+  avs?.forEach((av) => {
+    av.maintenances?.forEach((maintenance) => {
       maintenanceArr.push(maintenance)
     })
   })
