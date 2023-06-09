@@ -44,10 +44,20 @@ const MaintenanceChart = (props: MaintenanceChartProps): JSX.Element => {
     return acc;
   }, []);
 
-  console.log ('SERVICE', serviceData)
+
+  // applying averages
+  serviceData.forEach(service => {
+    const avgPartsCost = service.partsCost / maintenanceArr.filter(obj => obj.type === service.type).length;
+  const avgLaborCost = service.laborCost / maintenanceArr.filter(obj => obj.type === service.type).length;
+
+    service.partsCost = avgPartsCost;
+    service.laborCost = avgLaborCost;
+  })
+
 
   return (
     <div className={styles.maintenanceChartContainer}>
+      <h2>Avg Service Cost</h2>
       <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={serviceData}

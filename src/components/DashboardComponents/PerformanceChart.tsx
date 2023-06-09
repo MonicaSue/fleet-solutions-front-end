@@ -48,6 +48,7 @@ const PerformanceChart = (props: PerformanceChartProps): JSX.Element => {
 
   return (
     <div className={styles.performanceChartContainer}>
+      <h2># Takeovers Over Time</h2>
       <ResponsiveContainer width="100%" height={400}>
         <LineChart
           width={500}

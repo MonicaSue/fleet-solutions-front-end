@@ -63,8 +63,8 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         {user && user.role === "Driver" ? <></> : <MaintenanceKpi avs={avs} />}
       </div>
       <div className={styles.mid}>
-        <MaintenanceChart avs={avs} />
         <PerformanceChart avs={avs} />
+        <MaintenanceChart avs={avs} />
       </div>
       <div className={styles.bottom}>
         <MaintenanceTable user={user} avs={avs} setAvs={setAvs}/>

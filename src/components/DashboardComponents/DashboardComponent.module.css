@@ -53,6 +53,7 @@
 }
 
 .maintenanceChartContainer {
+  color: black;
   position: relative;
   padding: 15px 20px;
   border-radius: 20px;
@@ -60,6 +61,7 @@
 }
 
 .performanceChartContainer {
+  color: black;
   position: relative;
   padding: 15px 20px;
   border-radius: 20px;
