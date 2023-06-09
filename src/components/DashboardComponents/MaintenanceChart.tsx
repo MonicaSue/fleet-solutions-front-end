@@ -44,13 +44,13 @@ const MaintenanceChart = (props: MaintenanceChartProps): JSX.Element => {
 
 
   // applying averages
-  serviceData.forEach(service => {
-    const avgPartsCost = service.partsCost / maintenanceArr.filter(obj => obj.type === service.type).length;
-  const avgLaborCost = service.laborCost / maintenanceArr.filter(obj => obj.type === service.type).length;
+  // serviceData.forEach(service => {
+  //   const avgPartsCost = service.partsCost / maintenanceArr.filter(obj => obj.type === service.type).length;
+  // const avgLaborCost = service.laborCost / maintenanceArr.filter(obj => obj.type === service.type).length;
 
-    service.partsCost = avgPartsCost;
-    service.laborCost = avgLaborCost;
-  })
+  //   service.partsCost = avgPartsCost;
+  //   service.laborCost = avgLaborCost;
+  // })
 
 
   return (
