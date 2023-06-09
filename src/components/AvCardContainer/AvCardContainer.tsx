@@ -21,7 +21,7 @@ const AvCardContainer = (props: AvCardContainerProps): JSX.Element => {
 
   return (
     <div className={styles.container}>
-      {avs.map((av) => (
+      {avs?.map((av) => (
         <div key={av.id} onClick={handleClick} id={av.id.toString()}>
           <AvCard av={av} />
         </div>

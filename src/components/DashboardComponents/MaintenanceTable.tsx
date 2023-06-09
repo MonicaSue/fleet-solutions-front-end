@@ -53,9 +53,9 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
                 <th>EDIT</th>
               </tr>
             </thead>
-            {avs.map((av) => (
+            {avs?.map((av) => (
               <tbody key={av.id}>
-                {av.maintenances.map((maintenance) => (
+                {av.maintenances?.map((maintenance) => (
                   <MaintenanceTableReadOnlyRow
                     key={maintenance.id}
                     maintenance={maintenance}
@@ -83,7 +83,7 @@ const MaintenanceTable = (props: MaintenanceTableProps) => {
               <th>STATUS</th>
             </tr>
           </thead>
-          {avs.map((av) => (
+          {avs?.map((av) => (
             <tbody key={av.id}>
               {av.maintenances.map((maintenance) => (
                 <tr key={maintenance.id}>
