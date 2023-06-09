@@ -1,5 +1,6 @@
 // npm
 import { useState } from "react";
+import moment from "moment";
 
 // service
 import * as avService from "../../services/avService";
@@ -115,7 +116,7 @@ const MaintenanceTableEditableRow = (
             <option value={"In Queue"}>In Queue</option>
           </select>
         </td>
-        <td></td>
+        <td>{moment.utc(maintenance.createdAt).format("D MMM YYYY")}</td>
         <td>
           <input
             type="date"
