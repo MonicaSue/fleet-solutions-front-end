@@ -48,7 +48,6 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
   };
 
   if (!avs.length) return <main>Loading...</main>
-  console.log('AVS:', avs)
 
   return (
     <main className={styles.container}>

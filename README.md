@@ -39,6 +39,7 @@ Planning materials and original wireframes can be found [here](https://trello.co
 - [ ] Allow users to search for an AV by it's vehicle Id # in the AVs and Dashboard pages
 - [ ] Allow users to filter the dashboard by Month, Year, YTD
 - [ ] Allow admins to deactivate accounts, preventing users to sign-in, in order to maintain data history
+- [ ] Implement role dashboard views
 - [ ] Implement safety incident model and dashboard
 - [ ] Implement a more robust analytical reporting 
 - [ ] Implement drag and drop functionality to the AVs page

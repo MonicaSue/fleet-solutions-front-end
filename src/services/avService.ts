@@ -80,7 +80,6 @@ async function createMaintenance(formData: MaintenanceFormData, id: number): Pro
 }
 
 async function updateMaintenance(formData: UpdateMaintenanceFormData, id: number, maintenanceId: number): Promise<Av> {
-  console.log(maintenanceId, id)
   const res = await fetch(`${BASE_URL}/${id}/maintenances/${maintenanceId}`, {
     method: 'PUT',
     headers: {

@@ -26,7 +26,6 @@ const NewMaintenance = (props: NewMaintenanceProps): JSX.Element => {
   const [showForm, setShowForm] = useState(false);
 
   const defaultDate = moment.utc(new Date()).format("yyyy-MM-DD");
-  console.log(defaultDate);
 
   const [formData, setFormData] = useState<MaintenanceFormData>({
     type: "",
