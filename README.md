@@ -4,14 +4,16 @@
 
 ## Click **[Here](https://fleet-solutions.netlify.app/)** to use the app
 
-**Fleet Solutions** was inspired by my previous experience with an autonomous driving technology company. I wanted to create a fleetOps and finance solution that will help both departments to manage their workflows. The platform allows users to track parts and labor costs for maintenance, and the total amount of takeovers from any given drive.
+**Fleet Solutions** was inspired by my previous role with an autonomous driving technology company. I wanted to create a fleetOps and finance solution that will help both departments to manage their workflows. The platform allows users to track parts and labor costs for maintenance, and the total amount miles and takeovers from any given drive.
 
 **Fleet Solutions** will provide the data needed to make key budget and forecasting decisions, as well as understand the progression of the SDS over time. 
 
 Planning materials and original wireframes can be found [here](https://trello.com/b/vkUT9dft/fleet-solutions).
 
 ## Technologies Used:
-* TypeScript
+* TypeScript (frontend)
+* Javascript (backend)
+* Recharts.js
 * React.js
 * Express.js
 * Node.js
@@ -28,8 +30,9 @@ Planning materials and original wireframes can be found [here](https://trello.co
 * Fly.io
 
 ## Credits
-* Landing page image by [Unsplash](https://unsplash.com/s/photos/concrete)
+* Charts by [Rechart](https://recharts.org/en-US/examples/SimpleLineChart)
 * Vehicle image by [Edmunds](https://static.ed.edmunds-media.com/unversioned/img/self-driving-cars/car.svg)
+* Landing page image by [Unsplash](https://unsplash.com/s/photos/concrete)
 * Icons by [flaticon](https://www.flaticon.com/)
 
 ## Ice Box

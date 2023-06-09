@@ -45,6 +45,12 @@ export interface Takeover {
   date: string;
 }
 
+export interface Service {
+  type: string;
+  partsCost: number;
+  laborCost: number
+}
+
 /* ---------===== auth models =====--------- */
 
 export interface Profile {

@@ -1,7 +1,7 @@
 .navContainer {
   display: flex;
   flex-direction: row;
-  background-color: rgba(22, 22, 23, .85);
+  background-color: rgba(22, 22, 23, 0.851);
   overflow: hidden;
   position: fixed;
   z-index: 5;
