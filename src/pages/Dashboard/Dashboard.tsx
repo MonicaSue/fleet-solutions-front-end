@@ -59,8 +59,8 @@ const Dashboard = (props: DashboardProps): JSX.Element => {
         </Button>
       </div>
       <div className={styles.top}>
-        {user && user.role === "Mechanic" ? <></> : <PerformanceKpi avs={avs} />}
-        {user && user.role === "Driver" ? <></> : <MaintenanceKpi avs={avs} />}
+        <PerformanceKpi avs={avs} />
+        <MaintenanceKpi avs={avs} />
       </div>
       <div className={styles.mid}>
         <PerformanceChart avs={avs} />
