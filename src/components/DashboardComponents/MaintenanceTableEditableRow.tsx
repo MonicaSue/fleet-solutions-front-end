@@ -58,7 +58,7 @@ const MaintenanceTableEditableRow = (
         avId,
         editMaintenanceId
       );
-      const newAvs = avs.map((prevAv) => {
+      const newAvs = avs?.map((prevAv) => {
         return prevAv.id === avId ? updatedAv : prevAv;
       });
       setAvs(newAvs)

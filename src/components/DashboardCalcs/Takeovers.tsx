@@ -10,15 +10,13 @@ const Takeovers = (props: TakeoversProps) => {
 
   const takeovers = { total: 0 };
 
-  avs.map((av) =>
-    av.performances.map((performance) =>
+  avs?.map((av) =>
+    av.performances?.map((performance) =>
       performance.takeover
         ? (takeovers.total += performance.takeover)
         : (takeovers.total += 0)
     )
   );
-
-  // const avgTakeovers = !takeovers.total ? 0 : (takeovers.total / avs.length).toFixed(1)
 
   return <>{takeovers.total}</>;
 };

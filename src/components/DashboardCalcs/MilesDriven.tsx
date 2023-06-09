@@ -10,8 +10,8 @@ const MilesDriven = (props: MilesDrivenProps) => {
 
   const milesDriven = { total: 0 };
 
-  avs.map((av) =>
-    av.performances.map((performance) =>
+  avs?.map((av) =>
+    av.performances?.map((performance) =>
       performance.distance
         ? (milesDriven.total += performance.distance)
         : (milesDriven.total += 0)
